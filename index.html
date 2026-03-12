@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Digital RSVP | Marrsy Wedding Websites</title>
     <style>
+        /* --- Sticky Header --- */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95); /* Slight transparency */
+            backdrop-filter: blur(8px); /* Premium frosted glass effect */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transform: translateY(-100%); /* Hides it off-screen by default */
+            transition: transform 0.3s ease-in-out;
+            padding: 15px 0;
+        }
+        .sticky-header.visible {
+            transform: translateY(0); /* Slides it down when active */
+        }
+        .sticky-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         /* --- Merged Google Fonts --- */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
 
@@ -242,6 +267,12 @@
     </style>
 </head>
 <body>
+<header id="sticky-header" class="sticky-header">
+        <div class="sticky-container">
+            <a href="#" class="logo">The Digital RSVP</a>
+            <a href="#packages" class="btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">View Packages</a>
+        </div>
+</header>
 
     <nav>
         <a href="#" class="logo">The Digital RSVP</a>
@@ -344,6 +375,19 @@
             </div>
         </div>
     </section>
-
+    
+<script>
+        window.addEventListener('scroll', function() {
+            const stickyHeader = document.getElementById('sticky-header');
+            const heroSection = document.querySelector('.hero');
+            
+            // Show header if we scroll past the height of the hero section
+            if (window.scrollY > heroSection.offsetHeight) {
+                stickyHeader.classList.add('visible');
+            } else {
+                stickyHeader.classList.remove('visible');
+            }
+        });
+</script>
 </body>
 </html>
