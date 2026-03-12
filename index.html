@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bespoke Digital Wedding Invitations</title>
+    <style>
+        /* --- Clean, Elegant CSS --- */
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+        :root {
+            --primary: #2C3E2D; /* Deep Sage Green */
+            --accent: #D4AF37;  /* Soft Gold */
+            --bg: #FAFAF8;      /* Warm Off-White */
+            --text: #333333;
+            --light-bg: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section { padding: 80px 0; }
+
+        /* --- Hero Section --- */
+        #hero {
+            text-align: center;
+            padding: 120px 20px;
+            background-color: var(--light-bg);
+            border-bottom: 1px solid #EBEBEB;
+        }
+        #hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        #hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; color: #555; }
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        .btn:hover { background-color: #1a251b; }
+
+        /* --- Featured Work --- */
+        #featured { text-align: center; }
+        #featured h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .featured-card {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+        .featured-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background-color: #E8E8E8;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        /* --- Pricing --- */
+        #pricing { background-color: var(--light-bg); }
+        #pricing h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .pricing-card {
+            background: var(--bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #EAEAEA;
+            position: relative;
+        }
+        .pricing-card.highlight {
+            border: 2px solid var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .badge {
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .pricing-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .price { font-size: 1.8rem; font-weight: 600; color: var(--primary); margin-bottom: 10px; }
+        .turnover { font-size: 0.9rem; color: #777; margin-bottom: 20px; display: block; }
+        .pricing-card ul { list-style: none; margin-bottom: 20px; font-size: 0.9rem; }
+        .pricing-card ul li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .pricing-card ul li::before {
+            content: "✓";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- Contact --- */
+        #contact { text-align: center; }
+        #contact h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 2.5rem; }
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="hero">
+        <div class="container">
+            <h1>Beautiful Wedding Websites,<br>Without the Bridal Breakdown.</h1>
+            <p>Elevate your invitations with seamless, stylish, and smart digital experiences. I handle the tech, the design, and the guest list, so you can focus on saying "I do."</p>
+            <a href="#pricing" class="btn">View Packages</a>
+        </div>
+    </section>
+
+    <section id="featured">
+        <div class="container">
+            <h2>The Concierge Experience</h2>
+            <p>A completely stress-free, automated, and beautiful digital hub for your most important guests.</p>
+            <div class="featured-card">
+                <div class="featured-image-placeholder">
+                    [Insert High-Res Mockup of Concierge Site Here]
+                </div>
+                <h3>Mariel & Jasper's Story</h3>
+                <p>See how we managed over 200+ RSVPs, dietary restrictions, and zero uninvited plus-ones using our Full-Service Concierge workflow.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container">
+            <h2>Investment & Packages</h2>
+            <div class="pricing-grid">
+                
+                <div class="pricing-card">
+                    <h3>The "Lite"</h3>
+                    <div class="price">₱1,800</div>
+                    <span class="turnover">Turnover: 1–2 Business Days</span>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Perfect for couples who just need the essential details online.</p>
+                    <ul>
+                        <li>Signature Landing Page Template</li>
+                        <li>Custom Subdomain</li>
+                        <li>Background Music Embedded</li>
+                        <li>Open RSVP via Google Form</li>
+                        <li>Ceremony, Reception & Entourage</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>The "Essential"</h3>
+                    <div class="price">₱3,500</div>
+                    <span class="turnover">Turnover: 3–5 Business Days</span>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Elevate your invitations. Seamless, stylish, and smart.</p>
+                    <ul>
+                        <li>Signature Editorial Template</li>
+                        <li>Smart RSVP (GSheet Database)</li>
+                        <li>Google Maps / Waze Integration</li>
+                        <li>Photo Gallery & Save the Date Video</li>
+                        <li>Digital Gift Registry Integration</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card highlight">
+                    <div class="badge">Highly Recommended</div>
+                    <h3>The "Premium Tech"</h3>
+                    <div class="price">₱5,500</div>
+                    <span class="turnover">Turnover: 7-10 Business Days</span>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Best for modern couples who want full security and automated tracking.</p>
+                    <ul>
+                        <li><strong>Custom .com domain (1 year)</strong></li>
+                        <li>Guest-Specific Access Links</li>
+                        <li>Anti-Gatecrasher (Fixed Seat Counts)</li>
+                        <li>Automated "Thank You" Emails</li>
+                        <li>RSVP Deadline Form Lock</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Full-Service Concierge</h3>
+                    <div class="price">₱8,500+</div>
+                    <span class="turnover">Turnover: Custom Timeline</span>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;">For busy couples who want a dedicated digital manager.</p>
+                    <ul>
+                        <li>Everything in Premium Tech</li>
+                        <li>Continuous Database Management</li>
+                        <li>Weekly RSVP Reports via PDF/Email</li>
+                        <li>Final Headcount Turnover Report</li>
+                        <li>Priority Support Direct Line</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Ready to hand over the digital stress?</h2>
+            <p style="margin-bottom: 30px;">Let's get your wedding website off your to-do list.</p>
+            <a href="mailto:your-email@example.com" class="btn">Inquire Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Bespoke Digital Wedding Invitations. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
