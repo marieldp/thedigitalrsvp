@@ -9,7 +9,46 @@
 @media (max-width: 768px) {
             .sticky-container .nav-links { display: none; }
 }
-        /* --- Sticky Header --- */
+/* --- Testimonial Section --- */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--bg);
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .testimonial-card {
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+        .client-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 24px;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 0.9rem;
+        }
+        footer p { margin-bottom: 10px; color: #CCCCCC; }
+        footer a { color: var(--white); text-decoration: none; font-weight: 500;}
+        footer a:hover { text-decoration: underline; 
+        }
+/* --- Sticky Header --- */
         .sticky-header {
             position: fixed;
             top: 0;
@@ -385,6 +424,24 @@
             </div>
         </div>
     </section>
+
+<section id="testimonials" class="testimonials" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Kind Words</h2>
+            <div class="testimonial-card">
+                "The Digital RSVP completely saved my sanity. The smart database handled everything, and our guests couldn't stop talking about how beautiful the website was. Worth every single peso!"
+                <div class="client-name">— Sarah & James, Concierge Couple</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="#" class="logo" style="color: white; display: block; margin-bottom: 20px;">The Digital RSVP</a>
+            <p>&copy; 2026 The Digital RSVP. All rights reserved.</p>
+            <p>Say hello: <a href="mailto:hello@thedigitalrsvp.com">hello@thedigitalrsvp.com</a></p>
+        </div>
+    </footer>
     
 <script>
         window.addEventListener('scroll', function() {
