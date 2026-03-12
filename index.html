@@ -9,6 +9,40 @@
 @media (max-width: 768px) {
             .sticky-container .nav-links { display: none; }
 }
+/* --- Logo & Text Lockup Styling --- */
+.logo-wrap {
+    display: flex;
+    align-items: center; 
+    text-decoration: none;
+    gap: 15px; 
+}
+
+.nav-logo-img {
+    height: 50px; 
+    width: auto;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.logo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.logo-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gray);
+}
 /* --- Testimonial Section --- */
         .testimonials {
             padding: 100px 0;
@@ -312,20 +346,24 @@
 <body>
 <header id="sticky-header" class="sticky-header">
         <div class="sticky-container">
-            <a href="#" class="logo">The Digital RSVP</a>
-            
-            <div class="nav-links">
-                <a href="#featured">The Concierge</a>
-                <a href="#packages">Packages</a>
-                </div>
-
-            <a href="#packages" class="btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">View Packages</a>
+           <a href="#" class="logo-wrap">
+    <img src="logo.png" alt="TDR Logo" class="nav-logo-img">
+    <div class="logo-text">
+        <span class="logo-title">The Digital RSVP</span>
+        <span class="logo-tagline">Bespoke Wedding Tech</span>
+    </div>
+</a>
         </div>
     </header>
 
     <nav>
-        <a href="#" class="logo">The Digital RSVP</a>
-        <div class="nav-links">
+<a href="#" class="logo-wrap">
+    <img src="logo.png" alt="TDR Logo" class="nav-logo-img">
+    <div class="logo-text">
+        <span class="logo-title">The Digital RSVP</span>
+        <span class="logo-tagline">Bespoke Wedding Tech</span>
+    </div>
+</a>        <div class="nav-links">
             <a href="#featured">The Concierge</a>
             <a href="#packages">Packages</a>
         </div>
