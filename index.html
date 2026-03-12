@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Digital RSVP - Pricing</title>
+    <title>The Digital RSVP | Marrsy Wedding Websites</title>
     <style>
-        /* --- Clean, Elegant CSS for The Digital RSVP --- */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        /* --- Merged Google Fonts --- */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
 
         :root {
             --primary: #1A1A1A; /* Sharp Black/Dark Grey */
             --bg: #F9F9F9;      
             --card-bg: #FFFFFF;
             --border: #E0E0E0;
+            --gray: #666666;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,47 +23,163 @@
             background-color: var(--bg);
             color: var(--primary);
             line-height: 1.6;
-            padding: 60px 20px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Widen the container so 4 cards fit beautifully side-by-side */
+        /* Typography */
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
         .container {
             max-width: 1300px; 
             margin: 0 auto;
+            padding: 0 24px;
         }
 
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 600;}
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 24px;
+            background-color: var(--bg);
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            margin-left: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--gray); }
 
-        /* Force 4 columns on desktop */
+        /* --- Hero Section --- */
+        .hero {
+            padding: 100px 0 120px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+        .hero h1 i { color: var(--gray); font-weight: 500; }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--card-bg);
+            padding: 16px 36px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        /* --- Featured Concierge Section --- */
+        .featured {
+            background-color: var(--card-bg);
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .featured-image {
+            background-color: #EFEFEF;
+            height: 500px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .featured-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        .featured-content p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        .featured-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        .featured-list li {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .featured-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* --- Pricing Section (Your Code) --- */
+        .pricing-section {
+            padding: 100px 0;
+        }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 600;}
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 25px;
             align-items: stretch;
         }
-
         .pricing-card {
             background: var(--card-bg);
             padding: 30px;
             border-radius: 12px;
             border: 1px solid var(--border);
             display: flex;
-            flex-direction: column; /* Allows us to push the button to the bottom */
+            flex-direction: column; 
             position: relative;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-
         .pricing-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
-
-        /* Highlight for Premium Tech */
         .pricing-card.highlight {
             border: 2px solid var(--primary);
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         }
-
         .badge {
             background: var(--primary);
             color: white;
@@ -76,22 +193,20 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
-        h3 { font-size: 1.4rem; margin-bottom: 5px; font-weight: 600; }
+        .pricing-card h3 { font-size: 1.4rem; margin-bottom: 5px; font-weight: 600; font-family: 'Inter', sans-serif; }
         .price { font-size: 2rem; font-weight: 600; margin-bottom: 5px; }
         .turnover { font-size: 0.85rem; color: #666; display: block; margin-bottom: 15px; font-weight: 500;}
         .desc { font-size: 0.9rem; margin-bottom: 25px; color: #555; }
         
-        ul { list-style: none; margin-bottom: 30px; font-size: 0.9rem; flex-grow: 1; /* Pushes button down */ }
-        ul li { margin-bottom: 12px; padding-left: 24px; position: relative; color: #333; }
-        ul li::before {
+        .pricing-card ul { list-style: none; margin-bottom: 30px; font-size: 0.9rem; flex-grow: 1; }
+        .pricing-card ul li { margin-bottom: 12px; padding-left: 24px; position: relative; color: #333; }
+        .pricing-card ul li::before {
             content: "✓";
             position: absolute;
             left: 0;
             font-weight: bold;
         }
 
-        /* The Avail Now Button */
         .btn {
             display: block;
             text-align: center;
@@ -101,7 +216,7 @@
             text-decoration: none;
             border-radius: 6px;
             font-weight: 500;
-            margin-top: auto; /* Always sits at the bottom of the card */
+            margin-top: auto; 
             transition: background 0.3s;
         }
         .btn:hover { background-color: #333; }
@@ -112,84 +227,123 @@
         }
         .btn-outline:hover { background-color: var(--primary); color: white; }
 
-        /* Tablet scaling */
+        /* Responsive scaling */
         @media (max-width: 1100px) {
             .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 3.5rem; }
         }
-        /* Mobile scaling */
         @media (max-width: 768px) {
             .pricing-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.8rem; }
+            .featured-grid { grid-template-columns: 1fr; gap: 40px; }
+            .featured-image { height: 350px; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2 class="section-title">Packages for The Digital RSVP</h2>
-        
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>The "Lite"</h3>
-                <div class="price">₱1,800</div>
-                <span class="turnover">1–2 Business Days</span>
-                <p class="desc">A beautiful, modern digital invitation for essential details.</p>
-                <ul>
-                    <li>Signature Landing Page Template</li>
-                    <li>Custom Subdomain</li>
-                    <li>Background Music Embedded</li>
-                    <li>Open RSVP via Google Form</li>
-                    <li>Easily edit Entourage via GSheet</li>
-                </ul>
-                <a href="booking-lite.html" class="btn btn-outline">Avail Now</a>
-            </div>
+    <nav>
+        <a href="#" class="logo">The Digital RSVP</a>
+        <div class="nav-links">
+            <a href="#featured">The Concierge</a>
+            <a href="#packages">Packages</a>
+        </div>
+    </nav>
 
-            <div class="pricing-card">
-                <h3>The "Essential"</h3>
-                <div class="price">₱3,500</div>
-                <span class="turnover">3–5 Business Days</span>
-                <p class="desc">Elevate your invitations. Seamless, stylish, and smart.</p>
-                <ul>
-                    <li>Signature Editorial Template</li>
-                    <li>Smart RSVP (GSheet Database)</li>
-                    <li>Google Maps / Waze Integration</li>
-                    <li>Photo Gallery Slideshow</li>
-                    <li>Digital Gift Registry Integration</li>
-                </ul>
-                <a href="booking-essential.html" class="btn btn-outline">Avail Now</a>
-            </div>
+    <section class="hero container">
+        <h1>Beautiful websites.<br><i>Zero</i> bridal breakdown.</h1>
+        <p>Elevate your invitations with seamless, stylish, and smart digital experiences. I handle the tech, the design, and the guest list, so you can focus on saying "I do."</p>
+        <a href="#packages" class="btn-primary">View Packages</a>
+    </section>
 
-            <div class="pricing-card highlight">
-                <div class="badge">Highly Recommended</div>
-                <h3>Premium Tech</h3>
-                <div class="price">₱5,500</div>
-                <span class="turnover">7-10 Business Days</span>
-                <p class="desc">For modern couples who want full security and automated tracking.</p>
-                <ul>
-                    <li><strong>Custom .com domain (1 yr)</strong></li>
-                    <li>Guest-Specific Access Links</li>
-                    <li>Anti-Gatecrasher (Fixed Seats)</li>
-                    <li>Automated "Thank You" Emails</li>
-                    <li>RSVP Deadline Form Lock</li>
-                </ul>
-                <a href="booking-premium.html" class="btn">Avail Now</a>
+    <section id="featured" class="featured">
+        <div class="container featured-grid">
+            <div class="featured-image">
+                [Insert Mockup of Concierge Website Here]
             </div>
-
-            <div class="pricing-card">
-                <h3>Concierge</h3>
-                <div class="price">₱8,500+</div>
-                <span class="turnover">Custom Timeline</span>
-                <p class="desc">For busy couples who want a dedicated digital manager.</p>
-                <ul>
-                    <li>Everything in Premium Tech</li>
-                    <li>Continuous Database Management</li>
-                    <li>Weekly RSVP Reports via PDF/Email</li>
-                    <li>Final Headcount Turnover Report</li>
-                    <li>Priority Support Direct Line</li>
+            <div class="featured-content">
+                <h2>The Concierge Experience</h2>
+                <p>A completely stress-free, automated, and beautiful digital hub for your most important guests. Hand over your spreadsheet, and let me be your dedicated digital manager.</p>
+                <ul class="featured-list">
+                    <li>Strict Anti-Gatecrasher Tech (Fixed Seat Counts)</li>
+                    <li>Continuous Database & Guest List Management</li>
+                    <li>Weekly RSVP Reports Delivered to Your Inbox</li>
+                    <li>Final "Ready-for-Caterer" Headcount Report</li>
                 </ul>
-                <a href="booking-concierge.html" class="btn btn-outline">Avail Now</a>
+                <a href="booking-concierge.html" class="btn btn-primary" style="display:inline-block; margin-top:0;">Avail The Concierge</a>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section id="packages" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Packages for The Digital RSVP</h2>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>The "Lite"</h3>
+                    <div class="price">₱1,800</div>
+                    <span class="turnover">1–2 Business Days</span>
+                    <p class="desc">A beautiful, modern digital invitation for essential details.</p>
+                    <ul>
+                        <li>Signature Landing Page Template</li>
+                        <li>Custom Subdomain</li>
+                        <li>Background Music Embedded</li>
+                        <li>Open RSVP via Google Form</li>
+                        <li>Easily edit Entourage via GSheet</li>
+                    </ul>
+                    <a href="booking-lite.html" class="btn btn-outline">Avail Now</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>The "Essential"</h3>
+                    <div class="price">₱3,500</div>
+                    <span class="turnover">3–5 Business Days</span>
+                    <p class="desc">Elevate your invitations. Seamless, stylish, and smart.</p>
+                    <ul>
+                        <li>Signature Editorial Template</li>
+                        <li>Smart RSVP (GSheet Database)</li>
+                        <li>Google Maps / Waze Integration</li>
+                        <li>Photo Gallery Slideshow</li>
+                        <li>Digital Gift Registry Integration</li>
+                    </ul>
+                    <a href="booking-essential.html" class="btn btn-outline">Avail Now</a>
+                </div>
+
+                <div class="pricing-card highlight">
+                    <div class="badge">Highly Recommended</div>
+                    <h3>Premium Tech</h3>
+                    <div class="price">₱5,500</div>
+                    <span class="turnover">7-10 Business Days</span>
+                    <p class="desc">For modern couples who want full security and automated tracking.</p>
+                    <ul>
+                        <li><strong>Custom .com domain (1 yr)</strong></li>
+                        <li>Guest-Specific Access Links</li>
+                        <li>Anti-Gatecrasher (Fixed Seats)</li>
+                        <li>Automated "Thank You" Emails</li>
+                        <li>RSVP Deadline Form Lock</li>
+                    </ul>
+                    <a href="booking-premium.html" class="btn">Avail Now</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Concierge</h3>
+                    <div class="price">₱8,500+</div>
+                    <span class="turnover">Custom Timeline</span>
+                    <p class="desc">For busy couples who want a dedicated digital manager.</p>
+                    <ul>
+                        <li>Everything in Premium Tech</li>
+                        <li>Continuous Database Management</li>
+                        <li>Weekly RSVP Reports via PDF/Email</li>
+                        <li>Final Headcount Turnover Report</li>
+                        <li>Priority Support Direct Line</li>
+                    </ul>
+                    <a href="booking-concierge.html" class="btn btn-outline">Avail Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
