@@ -90,6 +90,22 @@ nav, .sticky-container {
     padding: 20px 24px;
     max-width: 1300px;
     margin: 0 auto;
+
+/* --- Sticky Header Logic --- */
+.sticky-header {
+    position: fixed;
+    top: -150px; /* Hides the header above the screen */
+    left: 0;
+    width: 100%;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+    transition: top 0.4s ease-in-out; /* Creates the smooth slide-down effect */
+}
+
+.sticky-header.visible {
+    top: 0; /* Slides the header into view when the JS adds this class */
+}
 }
 
 /* Push the button to the far right */
