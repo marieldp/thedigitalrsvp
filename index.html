@@ -124,7 +124,15 @@ nav, .sticky-container {
 .sticky-header.visible {
     top: 0; /* Slides the header into view when the JS adds this class */
 }
+/* --- Sticky Header Specific Logo Adjustments --- */
+.sticky-header .logo-tagline {
+    display: none; /* Hides the tagline completely on the scrolling nav */
+}
 
+.sticky-header .logo-wrap {
+    margin-bottom: 0; /* Removes the negative hanging margin so it stays inside the bar */
+    gap: 0; /* Removes the extra space since the text is gone */
+}
 
 /* Push the button to the far right */
 .nav-cta-wrapper {
