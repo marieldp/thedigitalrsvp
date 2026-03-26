@@ -10,11 +10,13 @@
             .sticky-container .nav-links { display: none; }
 }
 /* --- Logo & Text Lockup Styling --- */
+/* --- Logo & Text Lockup Styling --- */
 .logo-wrap {
     display: flex;
-    align-items: center; 
+    flex-direction: column; /* Stacks the image and text vertically */
+    align-items: flex-start; /* Aligns the text to the left edge of the logo */
     text-decoration: none;
-    gap: 15px; 
+    gap: 4px; /* Adds a tiny bit of breathing room between the logo and tagline */
 }
 
 .nav-logo-img {
@@ -369,13 +371,10 @@ nav, .sticky-container {
 <body>
 <header id="sticky-header" class="sticky-header">
     <div class="sticky-container">
-        <a href="#" class="logo-wrap">
-            <img src="logo.png" alt="TDR Logo" class="nav-logo-img">
-            <div class="logo-text">
-                <span class="logo-title">The Digital RSVP</span>
-                <span class="logo-tagline">Bespoke Wedding Tech</span>
-            </div>
-        </a>
+    <a href="#" class="logo-wrap">
+        <img src="logo.png" alt="The Digital RSVP Logo" class="nav-logo-img">
+        <span class="logo-tagline">Bespoke Wedding Tech</span>
+    </a>
         
         <div class="nav-links">
             <a href="#featured">The Concierge</a>
