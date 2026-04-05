@@ -9,57 +9,67 @@
 @media (max-width: 768px) {
             .sticky-container .nav-links { display: none; }
 }
-/* --- Logo & Text Lockup Styling --- */
-.logo-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    text-decoration: none;
-    gap: 6px; 
-    
-    /* --- The Hanging Logo Magic --- */
-    margin-bottom: -60px; /* This ignores the bottom half of the logo, letting it spill */
-    position: relative; /* Required for z-index to work */
-    z-index: 100; /* Keeps the logo visually on top of the hero section below it */
+/* --- The ONE Navbar --- */
+.main-nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #f8edeb; /* From your palette */
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
 }
 
-/* Optional: Ensure the text itself is perfectly centered if it wraps to two lines on small screens */
-.logo-tagline {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--gray);
-    text-align: center; 
+/* Scrolled state effect */
+.main-nav.scrolled {
+    background-color: rgba(248, 237, 235, 0.95); 
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #ece4db;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.nav-logo-img {
-    height: 50px; 
-    width: auto;
+.nav-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; 
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
+/* --- Fixed Logo Lockup (No Tagline, Perfectly Centered) --- */
+.logo-wrap { 
+    display: flex; 
+    align-items: center; /* Forces vertical centering */
+    text-decoration: none; 
+    gap: 15px; 
+}
+.nav-logo-img { height: 45px; width: auto; display: block; }
+.logo-title { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.3rem; 
+    font-weight: 600; 
+    color: #1A1A1A; 
+    line-height: 1; /* Removes invisible padding throwing off the center */
+    margin: 0;
 }
 
-.logo-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--primary);
+/* --- Center Links --- */
+.nav-links { display: flex; gap: 35px; justify-content: center; align-items: center; }
+.nav-links a { text-decoration: none; color: #1A1A1A; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+.nav-links a:hover { color: #fec5bb; }
+
+/* --- Right Button --- */
+.nav-cta-wrapper { display: flex; justify-content: flex-end; align-items: center; }
+.btn-primary { background-color: #1A1A1A; color: #ffffff; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: background 0.3s; }
+.btn-primary:hover { background-color: #fec5bb; color: #1A1A1A; }
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-container { grid-template-columns: 1fr 1fr; }
 }
 
-.logo-tagline {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--gray);
-}
 /* --- Testimonial Section --- */
         .testimonials {
             padding: 100px 0;
@@ -387,39 +397,27 @@ nav, .sticky-container {
     
 </head>
 <body>
-<header id="sticky-header" class="sticky-header">
-    <div class="sticky-container">
-    <a href="#" class="logo-wrap">
-        <img src="logo.png" alt="The Digital RSVP Logo" class="nav-logo-img">
-        <span class="logo-tagline">Bespoke Wedding Tech</span>
-    </a>
+<nav id="main-nav" class="main-nav">
+    <div class="nav-container">
+        
+        <a href="#" class="logo-wrap">
+            <img src="logo.png" alt="TDR Logo" class="nav-logo-img">
+            <span class="logo-title">The Digital RSVP</span>
+        </a>
+
         <div class="nav-links">
             <a href="#featured">Featured</a>
-            <a href="#packages">How It Works</a>
+            <a href="#process">How It Works</a>
             <a href="#packages">Packages / Pricing</a>
-            <a href="#packages">Customer Feedback</a>
-            <a href="#packages">FAQs</a>
-            <a href="#packages">My Story</a>
+            <a href="#testimonials">Customer Feedback</a>
+            <a href="#faq">FAQs</a>
+            <a href="#about">My Story</a>
         </div>
-    </div>
-</header>
 
-<nav>
-    <a href="#" class="logo-wrap">
-        <img src="logo.png" alt="TDR Logo" class="nav-logo-img">
-    </a>
+        <div class="nav-cta-wrapper">
+            <a href="#packages" class="btn-primary">View Packages</a>
+        </div>
 
-    <div class="nav-links">
-        <a href="#featured">Featured</a>
-        <a href="#packages">How It Works</a>
-        <a href="#packages">Packages / Pricing</a>
-        <a href="#packages">Customer Feedback</a>
-        <a href="#packages">FAQs</a>
-        <a href="#packages">My Story</a>
-    </div>
-
-    <div class="nav-cta-wrapper">
-        <a href="#packages" class="btn-primary" style="padding: 12px 24px; font-size: 0.85rem;">View Packages</a>
     </div>
 </nav>
 
