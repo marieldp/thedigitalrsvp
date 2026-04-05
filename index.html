@@ -5,176 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Digital RSVP | Marrsy Wedding Websites</title>
     <style>
-/*--MEDIA CSS --*/
-@media (max-width: 768px) {
-            .sticky-container .nav-links { display: none; }
-}
-/* --- The ONE Navbar --- */
-.main-nav {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background-color: #f8edeb; /* From your palette */
-    z-index: 1000;
-    padding: 15px 0;
-    border-bottom: 1px solid transparent;
-    transition: all 0.3s ease;
-}
-
-/* Scrolled state effect */
-.main-nav.scrolled {
-    background-color: rgba(248, 237, 235, 0.95); 
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid #ece4db;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.nav-container {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr; 
-    align-items: center;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-/* --- Fixed Logo Lockup (No Tagline, Perfectly Centered) --- */
-.logo-wrap { 
-    display: flex; 
-    align-items: center; /* Forces vertical centering */
-    text-decoration: none; 
-    gap: 15px; 
-}
-.nav-logo-img { height: 45px; width: auto; display: block; }
-.logo-title { 
-    font-family: 'Playfair Display', serif; 
-    font-size: 1.3rem; 
-    font-weight: 600; 
-    color: #1A1A1A; 
-    line-height: 1; /* Removes invisible padding throwing off the center */
-    margin: 0;
-}
-
-/* --- Center Links --- */
-.nav-links { display: flex; gap: 35px; justify-content: center; align-items: center; }
-.nav-links a { text-decoration: none; color: #1A1A1A; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
-.nav-links a:hover { color: #fec5bb; }
-
-/* --- Right Button --- */
-.nav-cta-wrapper { display: flex; justify-content: flex-end; align-items: center; }
-.btn-primary { background-color: #1A1A1A; color: #ffffff; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: background 0.3s; }
-.btn-primary:hover { background-color: #fec5bb; color: #1A1A1A; }
-
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .nav-container { grid-template-columns: 1fr 1fr; }
-}
-
-/* --- Testimonial Section --- */
-        .testimonials {
-            padding: 100px 0;
-            background-color: var(--bg);
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-        .testimonial-card {
-            max-width: 800px;
-            margin: 0 auto;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-style: italic;
-            color: var(--primary);
-            line-height: 1.4;
-        }
-        .client-name {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-top: 24px;
-            font-style: normal;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--gray);
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
-            text-align: center;
-            padding: 50px 20px;
-            font-size: 0.9rem;
-        }
-        footer p { margin-bottom: 10px; color: #CCCCCC; }
-        footer a { color: var(--white); text-decoration: none; font-weight: 500;}
-        footer a:hover { text-decoration: underline; 
-        }
-/* --- Navigation & Header Layout --- */
-nav, .sticky-container {
-    display: grid; 
-    grid-template-columns: 1fr auto 1fr; 
-    align-items: center;
-    padding: 10px 24px; /* Reduced top/bottom padding to make the bar slim */
-    max-width: 1300px;
-    margin: 0 auto;
-}
-
-/* --- Sticky Header Logic --- */
-.sticky-header {
-    position: fixed;
-    top: -150px; /* Hides the header above the screen */
-    left: 0;
-    width: 100%;
-    background-color: var(--card-bg);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    z-index: 1000;
-    transition: top 0.4s ease-in-out; /* Creates the smooth slide-down effect */
-}
-
-.sticky-header.visible {
-    top: 0; /* Slides the header into view when the JS adds this class */
-}
-/* --- Sticky Header Specific Logo Adjustments --- */
-.sticky-header .logo-tagline {
-    display: none; /* Hides the tagline completely on the scrolling nav */
-}
-
-.sticky-header .logo-wrap {
-    margin-bottom: 0; /* Removes the negative hanging margin so it stays inside the bar */
-    gap: 0; /* Removes the extra space since the text is gone */
-}
-
-/* Push the button to the far right */
-.nav-cta-wrapper {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.nav-links {
-    display: flex;
-    gap: 40px; /* Space between the two links */
-    justify-content: center;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--primary);
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
         /* --- Merged Google Fonts --- */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
 
-:root {
-    --primary: #4A4A4A;      /* A softer charcoal for text */
-    --accent: #fec89a;       /* Warm Peach/Rose Gold accent from your palette */
-    --bg: #f8edeb;          /* Very soft blush off-white for the background */
-    --card-bg: #FFFFFF;
-    --border: #ece4db;      /* Warm beige for subtle borders */
-    --gray: #9E9E9E;        /* Muted gray for taglines */
-}
+        :root {
+            --primary: #4A4A4A;      
+            --accent: #fec89a;       
+            --bg: #f8edeb;          
+            --card-bg: #FFFFFF;
+            --border: #ece4db;      
+            --gray: #9E9E9E;        
+        }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -199,229 +40,175 @@ nav, .sticky-container {
             padding: 0 24px;
         }
 
-        /* --- Navigation --- */
-   
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: var(--primary);
-            letter-spacing: 0.5px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--primary);
-            margin-left: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover { color: var(--gray); }
-
-        /* --- Hero Section --- */
-        .hero {
-            padding: 100px 0 120px;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            color: var(--primary);
-        }
-        .hero h1 i { color: var(--gray); font-weight: 500; }
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--primary);
-            color: var(--card-bg);
-            padding: 16px 36px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
+        /* --- The ONE Navbar --- */
+        .main-nav {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg); /* Matches landing page perfectly at first */
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid transparent;
             transition: all 0.3s ease;
         }
-        .btn-primary:hover {
-            background-color: #333;
-            transform: translateY(-2px);
-        }
 
-        /* --- Featured Concierge Section --- */
-        .featured {
-            background-color: var(--card-bg);
-            padding: 100px 0;
-            border-top: 1px solid var(--border);
+        /* Scrolled state effect - Changes to frosted white to stand out */
+        .main-nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border);
-        }
-        .featured-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        .featured-image {
-            background-color: #EFEFEF;
-            height: 500px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 0.9rem;
-        }
-        .featured-content h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-        .featured-content p {
-            font-size: 1.1rem;
-            color: var(--gray);
-            margin-bottom: 30px;
-        }
-        .featured-list {
-            list-style: none;
-            margin-bottom: 40px;
-        }
-        .featured-list li {
-            font-size: 1rem;
-            margin-bottom: 15px;
-            padding-left: 30px;
-            position: relative;
-        }
-        .featured-list li::before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-        
-        /* --- Pricing Section (Your Code) --- */
-        .pricing-section {
-            padding: 100px 0;
-        }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 600;}
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-            align-items: stretch;
-        }
-        .pricing-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column; 
-            position: relative;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-        .pricing-card.highlight {
-            border: 2px solid var(--primary);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-        .badge {
-            background: var(--primary);
-            color: white;
-            padding: 4px 12px;
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            font-size: 0.75rem;
-            border-radius: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .pricing-card h3 { font-size: 1.4rem; margin-bottom: 5px; font-weight: 600; font-family: 'Inter', sans-serif; }
-        .price { font-size: 2rem; font-weight: 600; margin-bottom: 5px; }
-        .turnover { font-size: 0.85rem; color: #666; display: block; margin-bottom: 15px; font-weight: 500;}
-        .desc { font-size: 0.9rem; margin-bottom: 25px; color: #555; }
-        
-        .pricing-card ul { list-style: none; margin-bottom: 30px; font-size: 0.9rem; flex-grow: 1; }
-        .pricing-card ul li { margin-bottom: 12px; padding-left: 24px; position: relative; color: #333; }
-        .pricing-card ul li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 10px 0; /* Shrinks slightly when scrolled */
         }
 
-        .btn {
-            display: block;
-            text-align: center;
-            background-color: var(--primary);
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            margin-top: auto; 
-            transition: background 0.3s;
+        .nav-container {
+            display: grid;
+            grid-template-columns: auto 1fr auto; /* Adjusted for wider links */
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+            gap: 20px;
         }
-        .btn:hover { background-color: #333; }
-        .btn-outline {
-            background-color: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-        }
-        .btn-outline:hover { background-color: var(--primary); color: white; }
 
-        /* Responsive scaling */
+        /* --- Fixed Logo Lockup --- */
+        .logo-wrap { 
+            display: flex; 
+            align-items: center; 
+            text-decoration: none; 
+            gap: 15px; 
+        }
+        .nav-logo-img { height: 45px; width: auto; display: block; }
+        .logo-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.3rem; 
+            font-weight: 600; 
+            color: #1A1A1A; 
+            line-height: 1; 
+            margin: 0;
+            white-space: nowrap; /* Prevents title from breaking */
+        }
+
+        /* --- Center Links (Adjusted to fit 6 items) --- */
+        .nav-links { 
+            display: flex; 
+            gap: 20px; /* Smaller gap to fit all 6 links */
+            justify-content: center; 
+            align-items: center; 
+        }
+        .nav-links a { 
+            text-decoration: none; 
+            color: #1A1A1A; 
+            font-size: 0.75rem; /* Smaller text to fit all 6 links */
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: color 0.3s; 
+            white-space: nowrap; /* STRICTLY forces links to stay on one line */
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- Right Button --- */
+        .nav-cta-wrapper { display: flex; justify-content: flex-end; align-items: center; }
+        .btn-primary { 
+            background-color: #1A1A1A; 
+            color: #ffffff; 
+            padding: 12px 24px; 
+            border-radius: 4px; 
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            font-weight: 500; 
+            transition: background 0.3s; 
+            white-space: nowrap; /* Prevents button text from breaking */
+        }
+        .btn-primary:hover { background-color: var(--accent); color: #1A1A1A; }
+
+        /* --- Responsive Adjustments --- */
         @media (max-width: 1100px) {
-            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero h1 { font-size: 3.5rem; }
+            /* Hides the 6 links earlier on tablets so they don't crash into the logo */
+            .nav-links { display: none; }
+            .nav-container { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
-            .pricing-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.8rem; }
             .featured-grid { grid-template-columns: 1fr; gap: 40px; }
             .featured-image { height: 350px; }
-            .nav-links { display: none; }
+            .pricing-grid { grid-template-columns: 1fr; }
         }
+
+        /* --- Hero Section --- */
+        .hero { padding: 100px 0 120px; text-align: center; }
+        .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 24px; color: var(--primary); }
+        .hero h1 i { color: var(--gray); font-weight: 500; }
+        .hero p { font-size: 1.2rem; color: var(--gray); max-width: 600px; margin: 0 auto 40px; }
+
+        /* --- Featured Concierge Section --- */
+        .featured { background-color: var(--card-bg); padding: 100px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .featured-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .featured-image { background-color: var(--bg); height: 500px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.9rem; border: 1px solid var(--border); }
+        .featured-content h2 { font-size: 2.8rem; margin-bottom: 20px; }
+        .featured-content p { font-size: 1.1rem; color: var(--gray); margin-bottom: 30px; }
+        .featured-list { list-style: none; margin-bottom: 40px; }
+        .featured-list li { font-size: 1rem; margin-bottom: 15px; padding-left: 30px; position: relative; }
+        .featured-list li::before { content: "—"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
+        /* --- Pricing Section --- */
+        .pricing-section { padding: 100px 0; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 600; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; align-items: stretch; }
+        .pricing-card { background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border); display: flex; flex-direction: column; position: relative; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .pricing-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .pricing-card.highlight { border: 2px solid var(--primary); box-shadow: 0 8px 20px rgba(0,0,0,0.03); }
+        .badge { background: var(--primary); color: white; padding: 4px 12px; position: absolute; top: -12px; right: 20px; font-size: 0.75rem; border-radius: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .pricing-card h3 { font-size: 1.4rem; margin-bottom: 5px; font-weight: 600; font-family: 'Inter', sans-serif; }
+        .price { font-size: 2rem; font-weight: 600; margin-bottom: 5px; }
+        .turnover { font-size: 0.85rem; color: var(--gray); display: block; margin-bottom: 15px; font-weight: 500; }
+        .desc { font-size: 0.9rem; margin-bottom: 25px; color: var(--gray); }
+        .pricing-card ul { list-style: none; margin-bottom: 30px; font-size: 0.9rem; flex-grow: 1; }
+        .pricing-card ul li { margin-bottom: 12px; padding-left: 24px; position: relative; color: var(--primary); }
+        .pricing-card ul li::before { content: "✓"; position: absolute; left: 0; font-weight: bold; }
+        .btn { display: block; text-align: center; background-color: var(--primary); color: white; padding: 14px 20px; text-decoration: none; border-radius: 6px; font-weight: 500; margin-top: auto; transition: background 0.3s; }
+        .btn:hover { background-color: var(--accent); color: var(--primary); }
+        .btn-outline { background-color: transparent; color: var(--primary); border: 1px solid var(--primary); }
+        .btn-outline:hover { background-color: var(--primary); color: white; }
+
+        /* --- Testimonial Section --- */
+        .testimonials { padding: 100px 0; background-color: var(--bg); text-align: center; border-top: 1px solid var(--border); }
+        .testimonial-card { max-width: 800px; margin: 0 auto; font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: var(--primary); line-height: 1.4; }
+        .client-name { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; margin-top: 24px; font-style: normal; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); }
+
+        /* --- Footer --- */
+        footer { background-color: var(--primary); color: var(--card-bg); text-align: center; padding: 50px 20px; font-size: 0.9rem; }
+        footer p { margin-bottom: 10px; color: var(--gray); }
+        footer a { color: var(--card-bg); text-decoration: none; font-weight: 500;}
+        footer a:hover { text-decoration: underline; color: var(--accent); }
     </style>
-
-
-    
 </head>
 <body>
-<nav id="main-nav" class="main-nav">
-    <div class="nav-container">
-        
-        <a href="#" class="logo-wrap">
-            <img src="logo.png" alt="TDR Logo" class="nav-logo-img">
-            <span class="logo-title">The Digital RSVP</span>
-        </a>
 
-        <div class="nav-links">
-            <a href="#featured">Featured</a>
-            <a href="#process">How It Works</a>
-            <a href="#packages">Packages / Pricing</a>
-            <a href="#testimonials">Customer Feedback</a>
-            <a href="#faq">FAQs</a>
-            <a href="#about">My Story</a>
+    <nav id="main-nav" class="main-nav">
+        <div class="nav-container">
+            <a href="#" class="logo-wrap">
+                <img src="logo.png" alt="TDR Logo" class="nav-logo-img">
+                <span class="logo-title">The Digital RSVP</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#featured">Featured</a>
+                <a href="#process">How It Works</a>
+                <a href="#packages">Packages / Pricing</a>
+                <a href="#testimonials">Customer Feedback</a>
+                <a href="#faq">FAQs</a>
+                <a href="#about">My Story</a>
+            </div>
+
+            <div class="nav-cta-wrapper">
+                <a href="#packages" class="btn-primary">View Packages</a>
+            </div>
         </div>
+    </nav>
 
-        <div class="nav-cta-wrapper">
-            <a href="#packages" class="btn-primary">View Packages</a>
-        </div>
-
-    </div>
-</nav>
-
-    
     <section class="hero container">
         <h1>Beautiful websites.<br><i>Zero</i> bridal breakdown.</h1>
         <p>Elevate your invitations with seamless, stylish, and smart digital experiences. I handle the tech, the design, and the guest list, so you can focus on saying "I do."</p>
@@ -450,7 +237,6 @@ nav, .sticky-container {
     <section id="packages" class="pricing-section">
         <div class="container">
             <h2 class="section-title">Packages for The Digital RSVP</h2>
-            
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>The "Lite"</h3>
@@ -462,90 +248,4 @@ nav, .sticky-container {
                         <li>Custom Subdomain</li>
                         <li>Background Music Embedded</li>
                         <li>Open RSVP via Google Form</li>
-                        <li>Easily edit Entourage via GSheet</li>
-                    </ul>
-                    <a href="booking-lite.html" class="btn btn-outline">Avail Now</a>
-                </div>
-
-                <div class="pricing-card">
-                    <h3>The "Essential"</h3>
-                    <div class="price">₱3,500</div>
-                    <span class="turnover">3–5 Business Days</span>
-                    <p class="desc">Elevate your invitations. Seamless, stylish, and smart.</p>
-                    <ul>
-                        <li>Signature Editorial Template</li>
-                        <li>Smart RSVP (GSheet Database)</li>
-                        <li>Google Maps / Waze Integration</li>
-                        <li>Photo Gallery Slideshow</li>
-                        <li>Digital Gift Registry Integration</li>
-                    </ul>
-                    <a href="booking-essential.html" class="btn btn-outline">Avail Now</a>
-                </div>
-
-                <div class="pricing-card highlight">
-                    <div class="badge">Highly Recommended</div>
-                    <h3>Premium Tech</h3>
-                    <div class="price">₱5,500</div>
-                    <span class="turnover">7-10 Business Days</span>
-                    <p class="desc">For modern couples who want full security and automated tracking.</p>
-                    <ul>
-                        <li><strong>Custom .com domain (1 yr)</strong></li>
-                        <li>Guest-Specific Access Links</li>
-                        <li>Anti-Gatecrasher (Fixed Seats)</li>
-                        <li>Automated "Thank You" Emails</li>
-                        <li>RSVP Deadline Form Lock</li>
-                    </ul>
-                    <a href="booking-premium.html" class="btn">Avail Now</a>
-                </div>
-
-                <div class="pricing-card">
-                    <h3>Concierge</h3>
-                    <div class="price">₱8,500+</div>
-                    <span class="turnover">Custom Timeline</span>
-                    <p class="desc">For busy couples who want a dedicated digital manager.</p>
-                    <ul>
-                        <li>Everything in Premium Tech</li>
-                        <li>Continuous Database Management</li>
-                        <li>Weekly RSVP Reports via PDF/Email</li>
-                        <li>Final Headcount Turnover Report</li>
-                        <li>Priority Support Direct Line</li>
-                    </ul>
-                    <a href="booking-concierge.html" class="btn btn-outline">Avail Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<section id="testimonials" class="testimonials" style="display: none;">
-        <div class="container">
-            <h2 class="section-title">Kind Words</h2>
-            <div class="testimonial-card">
-                "The Digital RSVP completely saved my sanity. The smart database handled everything, and our guests couldn't stop talking about how beautiful the website was. Worth every single peso!"
-                <div class="client-name">— Sarah & James, Concierge Couple</div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <a href="#" class="logo" style="color: white; display: block; margin-bottom: 20px;">The Digital RSVP</a>
-            <p>&copy; 2026 The Digital RSVP. All rights reserved.</p>
-            <p>Say hello: <a href="mailto:hello@thedigitalrsvp.com">hello@thedigitalrsvp.com</a></p>
-        </div>
-    </footer>
-    
-<script>
-        window.addEventListener('scroll', function() {
-            const stickyHeader = document.getElementById('sticky-header');
-            const heroSection = document.querySelector('.hero');
-            
-            // Show header if we scroll past the height of the hero section
-            if (window.scrollY > heroSection.offsetHeight) {
-                stickyHeader.classList.add('visible');
-            } else {
-                stickyHeader.classList.remove('visible');
-            }
-        });
-</script>
-</body>
-</html>
+                        <li>Easily edit Entourage via GSheet
