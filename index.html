@@ -64,12 +64,20 @@
 
         .nav-container {
             display: grid;
-            grid-template-columns: auto 1fr auto; /* Adjusted for wider links */
+            grid-template-columns: auto 1fr auto; 
             align-items: center;
-            max-width: 1300px;
+            max-width: 1450px; /* Widened to give more room */
             margin: 0 auto;
-            padding: 0 24px;
-            gap: 20px;
+            padding: 0 40px; /* Pushes it away from the screen edges */
+            gap: 30px; 
+        }
+
+        /* --- Center Links --- */
+        .nav-links { 
+            display: flex; 
+            gap: 35px; /* Increased space between the words */
+            justify-content: center; 
+            align-items: center; 
         }
 
         /* --- Fixed Logo Lockup --- */
@@ -90,13 +98,7 @@
             white-space: nowrap; /* Prevents title from breaking */
         }
 
-        /* --- Center Links (Adjusted to fit 6 items) --- */
-        .nav-links { 
-            display: flex; 
-            gap: 20px; /* Smaller gap to fit all 6 links */
-            justify-content: center; 
-            align-items: center; 
-        }
+
         .nav-links a { 
             text-decoration: none; 
             color: #1A1A1A; 
@@ -195,12 +197,12 @@
             </a>
 
             <div class="nav-links">
-                <a href="#featured">Featured</a>
-                <a href="#process">How It Works</a>
-                <a href="#packages">Packages / Pricing</a>
-                <a href="#testimonials">Customer Feedback</a>
-                <a href="#faq">FAQs</a>
-                <a href="#about">My Story</a>
+            <a href="#featured">Featured</a>
+            <a href="#process">Process</a>
+            <a href="#packages">Pricing</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#faq">FAQ</a>
+            <a href="#about">About</a>
             </div>
 
             <div class="nav-cta-wrapper">
