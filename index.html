@@ -244,7 +244,7 @@
         </div>
     </section>
 
-    <section id="packages" class="pricing-section">
+   <section id="packages" class="pricing-section">
         <div class="container">
             <h2 class="section-title">Packages for The Digital RSVP</h2>
             <div class="pricing-grid">
@@ -258,4 +258,90 @@
                         <li>Custom Subdomain</li>
                         <li>Background Music Embedded</li>
                         <li>Open RSVP via Google Form</li>
-                        <li>Easily edit Entourage via GSheet
+                        <li>Easily edit Entourage via GSheet</li>
+                    </ul>
+                    <a href="booking-lite.html" class="btn btn-outline">Avail Now</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>The "Essential"</h3>
+                    <div class="price">₱3,500</div>
+                    <span class="turnover">3–5 Business Days</span>
+                    <p class="desc">Elevate your invitations. Seamless, stylish, and smart.</p>
+                    <ul>
+                        <li>Signature Editorial Template</li>
+                        <li>Smart RSVP (GSheet Database)</li>
+                        <li>Google Maps / Waze Integration</li>
+                        <li>Photo Gallery Slideshow</li>
+                        <li>Digital Gift Registry Integration</li>
+                    </ul>
+                    <a href="booking-essential.html" class="btn btn-outline">Avail Now</a>
+                </div>
+
+                <div class="pricing-card highlight">
+                    <div class="badge">Highly Recommended</div>
+                    <h3>Premium Tech</h3>
+                    <div class="price">₱5,500</div>
+                    <span class="turnover">7-10 Business Days</span>
+                    <p class="desc">For modern couples who want full security and automated tracking.</p>
+                    <ul>
+                        <li><strong>Custom .com domain (1 yr)</strong></li>
+                        <li>Guest-Specific Access Links</li>
+                        <li>Anti-Gatecrasher (Fixed Seats)</li>
+                        <li>Automated "Thank You" Emails</li>
+                        <li>RSVP Deadline Form Lock</li>
+                    </ul>
+                    <a href="booking-premium.html" class="btn">Avail Now</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Concierge</h3>
+                    <div class="price">₱8,500+</div>
+                    <span class="turnover">Custom Timeline</span>
+                    <p class="desc">For busy couples who want a dedicated digital manager.</p>
+                    <ul>
+                        <li>Everything in Premium Tech</li>
+                        <li>Continuous Database Management</li>
+                        <li>Weekly RSVP Reports via PDF/Email</li>
+                        <li>Final Headcount Turnover Report</li>
+                        <li>Priority Support Direct Line</li>
+                    </ul>
+                    <a href="booking-concierge.html" class="btn btn-outline">Avail Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Kind Words</h2>
+            <div class="testimonial-card">
+                "The Digital RSVP completely saved my sanity. The smart database handled everything, and our guests couldn't stop talking about how beautiful the website was. Worth every single peso!"
+                <div class="client-name">— Sarah & James, Concierge Couple</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <a href="#" class="logo" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; color: white; display: block; margin-bottom: 20px;">The Digital RSVP</a>
+            <p>&copy; 2026 The Digital RSVP. All rights reserved.</p>
+            <p>Say hello: <a href="mailto:hello@thedigitalrsvp.com">hello@thedigitalrsvp.com</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // FIXED JAVASCRIPT: Now correctly targets 'main-nav'
+        window.addEventListener('scroll', function() {
+            const mainNav = document.getElementById('main-nav');
+            
+            // Show frosted glass background if scrolled down more than 50 pixels
+            if (window.scrollY > 50) {
+                mainNav.classList.add('scrolled');
+            } else {
+                mainNav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
