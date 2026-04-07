@@ -139,8 +139,16 @@
             .pricing-grid { grid-template-columns: 1fr; }
         }
 
-        /* --- Hero Section --- */
-        .hero { padding: 100px 0 120px; text-align: center; }
+        /* --- Hero Section (Full Screen Fit) --- */
+        .hero { 
+            min-height: 85vh; /* Tells it to take up 85% of whatever screen it is viewed on */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centers everything vertically */
+            align-items: center;     /* Centers everything horizontally */
+            text-align: center; 
+            padding: 40px 24px;
+        }
         .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 24px; color: var(--primary); }
         .hero h1 i { color: var(--gray); font-weight: 500; }
         .hero p { font-size: 1.2rem; color: var(--gray); max-width: 600px; margin: 0 auto 40px; }
