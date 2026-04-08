@@ -103,119 +103,86 @@
             padding: 0 24px;
         }
 
-        /* --- The ONE Navbar --- */
-        .main-nav {
-            position: sticky;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--bg); /* Matches landing page perfectly at first */
-            z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
 
-
-        /* Scrolled state effect - Changes to frosted white to stand out */
-        .main-nav.scrolled {
-            background-color: rgba(255, 255, 255, 0.95); 
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            padding: 10px 0; /* Shrinks slightly when scrolled */
-        }
-
-        .nav-container {
-            display: grid;
-            grid-template-columns: auto 1fr auto; 
-            align-items: center;
-            max-width: 1450px; /* Widened to give more room */
-            margin: 0 auto;
-            padding: 0 40px; /* Pushes it away from the screen edges */
-            gap: 30px; 
-        }
-
-        /* --- Center Links --- */
-        .nav-links { 
-            display: flex; 
-            gap: 35px; /* Increased space between the words */
-            justify-content: center; 
-            align-items: center; 
-        }
-
-        /* --- Fixed Logo Lockup --- */
-        .logo-wrap { 
-            display: flex; 
-            align-items: center; 
-            text-decoration: none; 
-            gap: 15px; 
-        }
-        .nav-logo-img { height: 45px; width: auto; display: block; }
-        .logo-title { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 1.3rem; 
-            font-weight: 600; 
-            color: #1A1A1A; 
-            line-height: 1; 
-            margin: 0;
-            white-space: nowrap; /* Prevents title from breaking */
-        }
-.navbar {
-  position: fixed; /* Keeps it at the top */
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px 50px;
-  box-sizing: border-box;
-  
-  /* 1. Make it transparent */
-  background-color: transparent; 
-  
-  /* 2. CRITICAL: Force it to sit on top of all other sections */
-  z-index: 9999; 
-  
-  /* 3. Ensure text contrasts with the background behind it */
-  mix-blend-mode: difference; 
-  color: white; /* 'difference' turns white text black on light backgrounds, and keeps it white on dark backgrounds */
-  
-  /* Optional: Let clicks pass through the empty transparent space */
-  pointer-events: none; 
+/* --- The ONE Navbar --- */
+.main-nav {
+    position: fixed; /* Changed from sticky to fixed so it floats over everything */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent; /* Makes it adopt the section colors behind it */
+    z-index: 9999; /* Forces it to the very front */
+    padding: 15px 0;
+    pointer-events: none; /* Allows clicks to pass through the empty transparent spaces */
 }
 
-/* Re-enable clicking on your logo and links */
-.navbar .nav-links a, 
-.navbar .logo {
-  pointer-events: auto; 
-  color: inherit; /* Inherits the contrasting color from the parent */
-  text-decoration: none;
+.nav-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto; 
+    align-items: center;
+    max-width: 1450px; 
+    margin: 0 auto;
+    padding: 0 40px; 
+    gap: 30px; 
+    pointer-events: auto; /* Re-enables clicking on your logo, links, and buttons */
 }
-        .nav-links a { 
-            text-decoration: none; 
-            color: #1A1A1A; 
-            font-size: 0.75rem; /* Smaller text to fit all 6 links */
-            font-weight: 600; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            transition: color 0.3s; 
-            white-space: nowrap; /* STRICTLY forces links to stay on one line */
-        }
-        .nav-links a:hover { color: var(--accent); }
 
-        /* --- Right Button --- */
-        .nav-cta-wrapper { display: flex; justify-content: flex-end; align-items: center; }
-        .btn-primary { 
-            background-color: #1A1A1A; 
-            color: #ffffff; 
-            padding: 12px 24px; 
-            border-radius: 4px; 
-            text-decoration: none; 
-            font-size: 0.85rem; 
-            font-weight: 500; 
-            transition: background 0.3s; 
-            white-space: nowrap; /* Prevents button text from breaking */
-        }
-        .btn-primary:hover { background-color: var(--accent); color: #1A1A1A; }
+/* --- Center Links --- */
+.nav-links { 
+    display: flex; 
+    gap: 35px; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* --- Fixed Logo Lockup --- */
+.logo-wrap { 
+    display: flex; 
+    align-items: center; 
+    text-decoration: none; 
+    gap: 15px; 
+}
+.nav-logo-img { height: 45px; width: auto; display: block; }
+
+.logo-title { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 1.3rem; 
+    font-weight: 600; 
+    color: #1A1A1A; 
+    line-height: 1; 
+    margin: 0;
+    white-space: nowrap; 
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: #1A1A1A; 
+    font-size: 0.75rem; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    transition: color 0.3s; 
+    white-space: nowrap; 
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+/* --- Right Button --- */
+.nav-cta-wrapper { display: flex; justify-content: flex-end; align-items: center; }
+.btn-primary { 
+    background-color: #1A1A1A; 
+    color: #ffffff; 
+    padding: 12px 24px; 
+    border-radius: 4px; 
+    text-decoration: none; 
+    font-size: 0.85rem; 
+    font-weight: 500; 
+    transition: background 0.3s; 
+    white-space: nowrap; 
+}
+.btn-primary:hover { background-color: var(--accent); color: #1A1A1A; }
+
+
 
         /* --- Responsive Adjustments --- */
         @media (max-width: 1100px) {
@@ -456,18 +423,6 @@
         </div>
     </footer>
     
-    <script>
-        // FIXED JAVASCRIPT: Now correctly targets 'main-nav'
-        window.addEventListener('scroll', function() {
-            const mainNav = document.getElementById('main-nav');
-            
-            // Show frosted glass background if scrolled down more than 50 pixels
-            if (window.scrollY > 50) {
-                mainNav.classList.add('scrolled');
-            } else {
-                mainNav.classList.remove('scrolled');
-            }
-        });
-    </script>
+   
 </body>
 </html>
