@@ -103,17 +103,25 @@
             padding: 0 24px;
         }
 
-
 /* --- The ONE Navbar --- */
 .main-nav {
-    position: fixed; /* Changed from sticky to fixed so it floats over everything */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
-    background-color: transparent; /* Makes it adopt the section colors behind it */
-    z-index: 9999; /* Forces it to the very front */
+    
+    /* 1. Semi-transparent white to absorb the section colors */
+    background-color: rgba(255, 255, 255, 0.4); 
+    
+    /* 2. Blurs the page text scrolling underneath so the nav remains readable */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); 
+    
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Optional: subtle edge */
+    z-index: 9999; 
     padding: 15px 0;
-    pointer-events: none; /* Allows clicks to pass through the empty transparent spaces */
+    
+    /* Remove pointer-events: none; since we now have a physical background */
 }
 
 .nav-container {
@@ -124,8 +132,21 @@
     margin: 0 auto;
     padding: 0 40px; 
     gap: 30px; 
-    pointer-events: auto; /* Re-enables clicking on your logo, links, and buttons */
 }
+
+/* --- Hero Section --- */
+.hero { 
+    min-height: 85vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    text-align: center; 
+    
+    /* 3. Increased top padding to 120px so it clears the fixed navbar */
+    padding: 120px 24px 40px; 
+}
+
 
 /* --- Center Links --- */
 .nav-links { 
@@ -197,16 +218,7 @@
             .pricing-grid { grid-template-columns: 1fr; }
         }
 
-        /* --- Hero Section (Full Screen Fit) --- */
-        .hero { 
-            min-height: 85vh; /* Tells it to take up 85% of whatever screen it is viewed on */
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Centers everything vertically */
-            align-items: center;     /* Centers everything horizontally */
-            text-align: center; 
-            padding: 40px 24px;
-        }
+  
         .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 24px; color: var(--primary); }
         .hero h1 i { color: var(--gray); font-weight: 500; }
         .hero p { font-size: 1.2rem; color: var(--gray); max-width: 600px; margin: 0 auto 40px; }
