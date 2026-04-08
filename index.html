@@ -161,17 +161,34 @@
             margin: 0;
             white-space: nowrap; /* Prevents title from breaking */
         }
-        .navbar {
-  position: fixed;
+.navbar {
+  position: fixed; /* Keeps it at the top */
   top: 0;
+  left: 0;
   width: 100%;
-  background-color: transparent;
-  pointer-events: none; /* Optional: lets you click things underneath the transparent parts */
+  padding: 20px 50px;
+  box-sizing: border-box;
+  
+  /* 1. Make it transparent */
+  background-color: transparent; 
+  
+  /* 2. CRITICAL: Force it to sit on top of all other sections */
+  z-index: 9999; 
+  
+  /* 3. Ensure text contrasts with the background behind it */
+  mix-blend-mode: difference; 
+  color: white; /* 'difference' turns white text black on light backgrounds, and keeps it white on dark backgrounds */
+  
+  /* Optional: Let clicks pass through the empty transparent space */
+  pointer-events: none; 
 }
 
-/* Re-enable clicking on the actual links */
-.navbar .nav-links a, .navbar .logo {
+/* Re-enable clicking on your logo and links */
+.navbar .nav-links a, 
+.navbar .logo {
   pointer-events: auto; 
+  color: inherit; /* Inherits the contrasting color from the parent */
+  text-decoration: none;
 }
         .nav-links a { 
             text-decoration: none; 
