@@ -492,23 +492,26 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const overlay = document.getElementById('intro-overlay');
-        const video = document.getElementById('intro-video'); // It's an img now, but we kept the ID
+        const video = document.getElementById('intro-video');
 
         const startIntroTransition = () => {
-            // 1. Shrink the GIF to the top left
+            // FIX: Instantly swap the looping GIF for your static navbar logo!
+            // Make sure "logo.png" matches the exact file name of your navbar logo.
+            video.src = "logo.png"; 
+
+            // 1. Shrink the image to the top left
             video.classList.add('shrink');
             
             // 2. Fade out the blurred background
             overlay.classList.add('fade-out');
 
-            // 3. Remove the overlay entirely after 1.5s animation
+            // 3. Remove the overlay entirely after the 1.5s animation
             setTimeout(() => {
                 overlay.style.display = 'none';
             }, 1500); 
         };
 
-        // Trigger the animation after exactly 4 seconds (4000ms)
-        // If your GIF is slightly longer/shorter, change the 4000 here!
+        // Trigger the animation after exactly 4 seconds
         setTimeout(startIntroTransition, 4000); 
     });
 </script>
