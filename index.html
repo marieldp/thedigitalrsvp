@@ -40,29 +40,33 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    
-    /* Centers the video exactly on its midpoint */
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%);
     
     width: 30%; 
+    height: auto; /* Ensures the video keeps its shape */
     max-width: 500px;
     min-width: 200px;
     
-    /* The speed and curve of the movement */
+    /* Optional: Your mix-blend-mode goes here if you are using it for transparency! */
+    mix-blend-mode: multiply; /* Or 'screen' depending on your video */
+
     transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* --- The Animation States triggered by JavaScript --- */
-
 .intro-video.shrink {
-    /* The exact coordinate you want it to travel to */
-    top: 40px;
-    left: 80px; 
+    /* 1. Target the exact coordinates of your real navbar logo */
+    top: 15px;  /* Matches your .main-nav padding-top */
+    left: 40px; /* Matches your .nav-container padding-left */
     
-    /* FIX 2: Keep the -50% center anchor, but shrink it to exactly 0 so it vanishes into a single point */
-    transform: translate(-50%, -50%) scale(0);
+    /* 2. Reset the centering transform so the top-left corners align perfectly */
+    transform: translate(0, 0);
     
-    /* (Removed opacity: 0 so it stays totally visible while it travels) */
+    /* 3. Match the exact size of your real navbar logo */
+    height: 45px; 
+    width: auto;
+    
+    /* 4. Turn off the min-width from the starting state so it's allowed to shrink */
+    min-width: 0; 
 }
 
 .intro-overlay.fade-out {
