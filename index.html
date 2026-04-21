@@ -212,6 +212,16 @@
     align-items: center; 
     text-decoration: none; 
     gap: 15px; 
+    
+    /* 1. Hide it when the page first loads */
+    opacity: 0; 
+    visibility: hidden;
+}
+
+/* 2. The JS will add this class to instantly show it */
+.logo-wrap.reveal {
+    opacity: 1;
+    visibility: visible;
 }
 .nav-logo-img { height: 45px; width: auto; display: block; }
 
@@ -493,21 +503,26 @@
     document.addEventListener("DOMContentLoaded", () => {
         const overlay = document.getElementById('intro-overlay');
         const video = document.getElementById('intro-video');
+        
+        // 1. Grab the real navbar logo
+        const realLogo = document.querySelector('.logo-wrap'); 
 
         const startIntroTransition = () => {
-            // FIX: Instantly swap the looping GIF for your static navbar logo!
-            // Make sure "logo.png" matches the exact file name of your navbar logo.
+            // Swap to static PNG
             video.src = "logo.png"; 
 
-            // 1. Shrink the image to the top left
+            // Start the shrink and fade
             video.classList.add('shrink');
-            
-            // 2. Fade out the blurred background
             overlay.classList.add('fade-out');
 
-            // 3. Remove the overlay entirely after the 1.5s animation
+            // Wait 1.5 seconds for the animation to travel to the corner
             setTimeout(() => {
+                // Delete the moving fake logo
                 overlay.style.display = 'none';
+                
+                // 2. Instantly reveal the real logo in the exact same spot!
+                realLogo.classList.add('reveal');
+                
             }, 1500); 
         };
 
