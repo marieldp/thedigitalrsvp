@@ -17,6 +17,56 @@
             --gray: #9E9E9E;        
         }
 
+        /* --- Intro Video Overlay --- */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Slight peach tint using your brand color + blur effect */
+    background-color: rgba(252, 213, 206, 0.5); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    z-index: 10000; /* Sits above everything, including the navbar */
+    transition: opacity 1.5s ease, backdrop-filter 1.5s ease;
+}
+
+.intro-video {
+    /* Perfectly center the video */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    
+    width: 30%; /* Adjust this to change the starting size of the video */
+    max-width: 500px;
+    min-width: 200px;
+    
+    /* Smooth transition for the shrinking effect */
+    transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- The Animation States triggered by JavaScript --- */
+
+/* 1. Shrinks the video and pulls it to the top left */
+.intro-video.shrink {
+    top: 30px;
+    left: 30px;
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+}
+
+/* 2. Fades out the background blur */
+.intro-overlay.fade-out {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    pointer-events: none; /* Lets you click the site even while it's still fading */
+}
+
         /* --- Process / How It Works Section --- */
         .process-section { 
             padding: 100px 0; 
@@ -267,6 +317,12 @@
 </head>
 <body>
 
+<div id="intro-overlay" class="intro-overlay">
+    <video id="intro-video" class="intro-video" autoplay muted playsinline>
+        <source src="transparent.mp4" type="video/mp4">
+    </video>
+</div>
+
     <nav id="main-nav" class="main-nav">
         <div class="nav-container">
             <a href="#" class="logo-wrap">
@@ -435,6 +491,36 @@
         </div>
     </footer>
     
-   
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const overlay = document.getElementById('intro-overlay');
+        const video = document.getElementById('intro-video');
+
+        // This function triggers the animations
+        const startIntroTransition = () => {
+            // 1. Shrink the video to the top left
+            video.classList.add('shrink');
+            
+            // 2. Fade out the blurred background
+            overlay.classList.add('fade-out');
+
+            // 3. Remove the overlay from the website entirely after the animation finishes (1.5 seconds)
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 1500); 
+        };
+
+        // Trigger the transition the second the video finishes playing
+        video.addEventListener('ended', startIntroTransition);
+
+        // FAILSAFE: Just in case a browser blocks autoplay (like iPhone low-battery mode), 
+        // force the transition after 5 seconds so the user isn't stuck on a blurred screen forever.
+        setTimeout(() => {
+            if (overlay.style.display !== 'none') {
+                startIntroTransition();
+            }
+        }, 5000);
+    });
+</script>  
 </body>
 </html>
