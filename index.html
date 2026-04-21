@@ -18,6 +18,7 @@
         }
 
         /* --- Intro Video Overlay --- */
+/* --- Intro Video Overlay --- */
 .intro-overlay {
     position: fixed;
     top: 0;
@@ -25,47 +26,54 @@
     width: 100%;
     height: 100%;
     
-    /* Slight peach tint using your brand color + blur effect */
     background-color: rgba(252, 213, 206, 0.5); 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     
-    z-index: 10000; /* Sits above everything, including the navbar */
-    transition: opacity 1.5s ease, backdrop-filter 1.5s ease;
+    z-index: 10000; 
+    
+    /* FIX 1: Animate the background color and blur directly, NOT the overall opacity */
+    transition: background-color 1.5s ease, backdrop-filter 1.5s ease, -webkit-backdrop-filter 1.5s ease;
 }
 
 .intro-video {
-    /* Perfectly center the video */
     position: absolute;
     top: 50%;
     left: 50%;
+    
+    /* Centers the video exactly on its midpoint */
     transform: translate(-50%, -50%) scale(1);
     
-    width: 30%; /* Adjust this to change the starting size of the video */
+    width: 30%; 
     max-width: 500px;
     min-width: 200px;
     
-    /* Smooth transition for the shrinking effect */
+    /* The speed and curve of the movement */
     transition: all 1.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* --- The Animation States triggered by JavaScript --- */
 
-/* 1. Shrinks the video and pulls it to the top left */
 .intro-video.shrink {
-    top: 30px;
-    left: 30px;
-    transform: translate(0, 0) scale(0);
-    opacity: 0;
+    /* The exact coordinate you want it to travel to */
+    top: 40px;
+    left: 80px; 
+    
+    /* FIX 2: Keep the -50% center anchor, but shrink it to exactly 0 so it vanishes into a single point */
+    transform: translate(-50%, -50%) scale(0);
+    
+    /* (Removed opacity: 0 so it stays totally visible while it travels) */
 }
 
-/* 2. Fades out the background blur */
 .intro-overlay.fade-out {
-    opacity: 0;
+    /* FIX 3: Fade the background color to transparent (the 0 at the end) instead of using opacity */
+    background-color: rgba(252, 213, 206, 0); 
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
-    pointer-events: none; /* Lets you click the site even while it's still fading */
+    pointer-events: none; 
 }
+
+
 
         /* --- Process / How It Works Section --- */
         .process-section { 
