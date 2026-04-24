@@ -183,16 +183,19 @@
 
 /* --- Hero Section (Full Screen Video) --- */
 .hero { 
-    position: relative; /* Keeps the absolute video trapped inside this section */
-    height: 100vh; /* Forces the section to be exactly 100% of the screen height */
+    position: relative; 
+    height: 100vh; 
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center; 
     align-items: center;     
     text-align: center; 
-    padding: 0 24px; /* Removed top padding so it goes all the way behind the navbar */
+    padding: 0 24px; 
     overflow: hidden; 
+    
+    /* THE FIX: A fallback color so your screen isn't blank if the video path is wrong */
+    background-color: var(--primary); 
 }
 
 .hero-bg-video {
