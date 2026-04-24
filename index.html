@@ -17,7 +17,54 @@
             --gray: #9E9E9E;        
         }
 
-        /* --- Intro Video Overlay --- */
+/* --- Typewriter Effect for Letters --- */
+.letter {
+    opacity: 0;
+    /* No transitions here, so the letters snap in instantly! */
+}
+.letter.typed {
+    opacity: 1;
+}
+
+/* The Blinking Cursor */
+#animate-letters::after {
+    content: '|';
+    display: inline-block;
+    color: var(--accent); /* Uses your soft peach color! */
+    animation: blink 0.8s infinite;
+    margin-left: 2px;
+    opacity: 0; /* Hidden initially */
+}
+#animate-letters.start-cursor::after {
+    opacity: 1; /* Turns on when typing begins */
+}
+#animate-letters.stop-cursor::after {
+    display: none; /* Hides when the rest of the words slide in */
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- Sliding Fade for the Rest of the Words --- */
+.word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+    margin-right: 0.25em;
+    white-space: nowrap;
+}
+.word.reveal-text {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Ensure the titles stay white and big */
+#animate-letters, #animate-words-title { color: white; margin-bottom: 10px; }
+#animate-words-p { color: white; margin-top: 20px; }
+
 /* --- Intro Overlay --- */
 .intro-overlay {
     position: fixed;
@@ -391,10 +438,13 @@
         <source src="landingvideo.mp4" type="video/mp4">
     </video>
 
-    <div class="hero-content" id="hero-text">
-        <h1>Beautiful websites.<br><i>Zero</i> bridal breakdown.</h1>
-        <p>Elevate your invitations with seamless, stylish, and smart digital experiences. I handle the tech, the design, and the guest list, so you can focus on saying "I do."</p>
-        <a href="#packages" class="btn-primary">View Packages</a>
+    <div class="hero-content">
+        <h1 id="animate-letters">Beautiful websites.</h1>
+        <h1 id="animate-words-title"><i>Zero</i> bridal breakdown.</h1>
+        <p id="animate-words-p">Elevate your invitations with seamless, stylish, and smart digital experiences. I handle the tech, the design, and the guest list, so you can focus on saying "I do."</p>
+        <div id="hero-btn-wrap" style="opacity:0; transition: opacity 1s ease;">
+             <a href="#packages" class="btn-primary">View Packages</a>
+        </div>
     </div>
 </section>
 
@@ -541,58 +591,99 @@
     </footer>
     
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        // Elements
-        const overlay = document.getElementById('intro-overlay');
-        const introVideo = document.getElementById('intro-video'); 
-        const realLogo = document.querySelector('.logo-wrap'); 
-        const heroVideo = document.getElementById('hero-video');
-        const heroText = document.getElementById('hero-text');
+  document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById('intro-overlay');
+    const introVideo = document.getElementById('intro-video'); 
+    const realLogo = document.querySelector('.logo-wrap'); 
+    const heroVideo = document.getElementById('hero-video');
+    const btnWrap = document.getElementById('hero-btn-wrap');
 
-        // The Master Transition
-        const startIntroTransition = () => {
-            if (introVideo) introVideo.src = "logo.png"; 
+    // --- TEXT SHATTERING LOGIC ---
+    const shatterLetters = (id) => {
+        const el = document.getElementById(id);
+        const text = el.innerText;
+        el.innerHTML = text.split('').map(char => `<span class="letter">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
+    };
 
-            if (introVideo) introVideo.classList.add('shrink');
-            if (overlay) overlay.classList.add('fade-out');
+    const shatterWords = (id) => {
+        const el = document.getElementById(id);
+        const text = el.innerText;
+        el.innerHTML = text.split(' ').map(word => `<span class="word">${word}</span>`).join('');
+    };
 
-            // Try to play the background video
-            if (heroVideo) {
-                // Catch any errors if the video is missing or blocked
-                heroVideo.play().catch(e => console.log("Video couldn't play automatically."));
-            }
+    // Shatter the text immediately on load
+    shatterLetters('animate-letters');
+    shatterWords('animate-words-title');
+    shatterWords('animate-words-p');
 
-            setTimeout(() => {
-                if (overlay) overlay.style.display = 'none'; 
-                if (realLogo) realLogo.classList.add('reveal'); 
-            }, 1500); 
-            
-            // THE TEXT FAILSAFE: 
-            // 3 seconds after the intro finishes, force the text to appear NO MATTER WHAT.
-            setTimeout(() => {
-                if (heroText) heroText.classList.add('show-text');
-            }, 3000);
-        };
+    // --- THE MASTER TRANSITION ---
+    const startIntroTransition = () => {
+        if (introVideo) introVideo.src = "logo.png"; 
+        if (introVideo) introVideo.classList.add('shrink');
+        if (overlay) overlay.classList.add('fade-out');
 
-        // Start intro exactly 4 seconds after page load
-        setTimeout(startIntroTransition, 4000); 
+        heroVideo.play();
 
-        // --- Hero Video Interactions ---
-        if (heroVideo) {
-            heroVideo.addEventListener('timeupdate', () => {
-                if (heroVideo.currentTime >= 3) {
-                    if (heroText) heroText.classList.add('show-text');
-                }
-            });
+        setTimeout(() => {
+            if (overlay) overlay.style.display = 'none'; 
+            if (realLogo) realLogo.classList.add('reveal'); 
+        }, 1500); 
+    };
 
-            heroVideo.addEventListener('ended', () => {
-                const featuredSection = document.getElementById('featured');
-                if (featuredSection) {
-                    featuredSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+    setTimeout(startIntroTransition, 4000); 
+
+    // --- TRIGGER TEXT ANIMATION AT 2 SECONDS ---
+    let textAnimated = false;
+    heroVideo.addEventListener('timeupdate', () => {
+        if (heroVideo.currentTime >= 2 && !textAnimated) {
+            textAnimated = true;
+            animateEverything();
         }
     });
+
+   const animateEverything = () => {
+        const titleEl = document.getElementById('animate-letters');
+        
+        // Turn on the blinking cursor!
+        titleEl.classList.add('start-cursor'); 
+
+        // 1. Typewriter Letters ("Beautiful websites.")
+        const letters = document.querySelectorAll('.letter');
+        const typingSpeed = 80; // 80ms per letter looks like real mechanical typing
+
+        letters.forEach((l, i) => {
+            setTimeout(() => { 
+                l.classList.add('typed'); 
+            }, i * typingSpeed); 
+        });
+
+        // Calculate exactly when the typing will finish
+        const startWordsDelay = (letters.length * typingSpeed) + 400; // Adds a small pause after typing
+
+        // Hide the cursor exactly when the other words start sliding in
+        setTimeout(() => {
+            titleEl.classList.add('stop-cursor'); 
+        }, startWordsDelay);
+
+        // 2. Sliding Words ("Zero bridal breakdown.")
+        const words = document.querySelectorAll('.word');
+        
+        words.forEach((w, i) => {
+            setTimeout(() => { 
+                w.classList.add('reveal-text'); 
+            }, startWordsDelay + (i * 150)); 
+        });
+
+        // 3. Fade in button last
+        setTimeout(() => {
+            btnWrap.style.opacity = '1';
+        }, startWordsDelay + (words.length * 150) + 500);
+    };
+    // Auto-scroll when video ends
+    heroVideo.addEventListener('ended', () => {
+        document.getElementById('featured').scrollIntoView({ behavior: 'smooth' });
+    });
+});
 </script>
 </body>
 </html>
