@@ -259,21 +259,11 @@
     filter: brightness(0.7); 
 }
 
-/* The invisible text box waiting to be revealed */
+/* The container holding our animated words */
 .hero-content {
-    opacity: 0;
-    transform: translateY(30px); 
-    transition: all 1.5s ease; 
-    
-    /* FIX: Make sure the text sits completely in front of the video */
     position: relative;
     z-index: 2; 
-}
-
-/* The class our JavaScript will add at 3 seconds */
-.hero-content.show-text {
-    opacity: 1;
-    transform: translateY(0);
+    /* Removed the opacity: 0 so the box itself is always visible, letting the hidden letters inside do the animating! */
 }
 
 /* Make the text white with a soft shadow to pop against the video */
