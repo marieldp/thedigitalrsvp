@@ -153,26 +153,6 @@
             padding: 0 24px;
         }
 
-/* --- The ONE Navbar --- */
-.main-nav {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    
-    /* 1. Semi-transparent white to absorb the section colors */
-    background-color: rgba(255, 255, 255, 0.4); 
-    
-    /* 2. Blurs the page text scrolling underneath so the nav remains readable */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px); 
-    
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Optional: subtle edge */
-    z-index: 9999; 
-    padding: 15px 0;
-    
-    /* Remove pointer-events: none; since we now have a physical background */
-}
 
 .nav-container {
     display: grid;
@@ -184,18 +164,66 @@
     gap: 30px; 
 }
 
-/* --- Hero Section --- */
+/* --- The ONE Navbar --- */
+.main-nav {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    /* Completely transparent so the video shines through 100% */
+    background-color: transparent; 
+    border-bottom: none; 
+    
+    z-index: 9999; 
+    padding: 15px 0;
+}
+
+/* (Keep your existing .nav-container and logo CSS right here!) */
+
+/* --- Hero Section (Full Screen Video) --- */
 .hero { 
-    min-height: 85vh; 
+    position: relative; /* Keeps the absolute video trapped inside this section */
+    height: 100vh; /* Forces the section to be exactly 100% of the screen height */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center; 
     align-items: center;     
     text-align: center; 
-    
-    /* 3. Increased top padding to 120px so it clears the fixed navbar */
-    padding: 120px 24px 40px; 
+    padding: 0 24px; /* Removed top padding so it goes all the way behind the navbar */
+    overflow: hidden; 
 }
+
+.hero-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops the video perfectly to fill the screen without squishing it */
+    z-index: -1; /* Pushes the video behind the text */
+    filter: brightness(0.7); /* Slightly darkens the video so your white text is readable */
+}
+
+/* The invisible text box waiting to be revealed */
+.hero-content {
+    opacity: 0;
+    transform: translateY(30px); /* Starts slightly lower for a smooth floating-up effect */
+    transition: all 1.5s ease; /* Super smooth 1.5 second fade in */
+    z-index: 1; 
+}
+
+/* The class our JavaScript will add at 3 seconds */
+.hero-content.show-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Make the text white with a soft shadow to pop against the video */
+.hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 24px; color: #ffffff; text-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+.hero h1 i { color: var(--accent); font-weight: 500; } /* Accent color looks amazing on dark videos */
+.hero p { font-size: 1.2rem; color: #ffffff; max-width: 600px; margin: 0 auto 40px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
 
 /* --- Center Links --- */
@@ -279,9 +307,6 @@
         }
 
   
-        .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 24px; color: var(--primary); }
-        .hero h1 i { color: var(--gray); font-weight: 500; }
-        .hero p { font-size: 1.2rem; color: var(--gray); max-width: 600px; margin: 0 auto 40px; }
 
         /* --- Featured Concierge Section --- */
         .featured { background-color: var(--card-bg); padding: 100px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -352,11 +377,9 @@
         </div>
     </nav>
 
-    <section class="hero container">
-        <h1>Beautiful websites.<br><i>Zero</i> bridal breakdown.</h1>
-        <p>Elevate your invitations with seamless, stylish, and smart digital experiences. I handle the tech, the design, and the guest list, so you can focus on saying "I do."</p>
-        <a href="#packages" class="btn-primary">View Packages</a>
-    </section>
+<video id="hero-video" class="hero-bg-video" muted playsinline>
+    <source src="landingvideo.mp4" type="video/mp4">
+</video>
 
     <section id="featured" class="featured">
         <div class="container featured-grid">
@@ -500,33 +523,53 @@
     
 <script>
     document.addEventListener("DOMContentLoaded", () => {
+        // Elements for Intro Overlay
         const overlay = document.getElementById('intro-overlay');
-        const video = document.getElementById('intro-video');
-        
-        // 1. Grab the real navbar logo
+        const introVideo = document.getElementById('intro-video'); // The loading GIF
         const realLogo = document.querySelector('.logo-wrap'); 
 
-        const startIntroTransition = () => {
-            // Swap to static PNG
-            video.src = "logo.png"; 
+        // Elements for Hero Video
+        const heroVideo = document.getElementById('hero-video');
+        const heroText = document.getElementById('hero-text');
 
-            // Start the shrink and fade
-            video.classList.add('shrink');
+        // The Master Function that triggers at 4 seconds
+        const startIntroTransition = () => {
+            // 1. Swap the looping GIF to the static PNG
+            introVideo.src = "logo.png"; 
+
+            // 2. Start the shrink and fade animations
+            introVideo.classList.add('shrink');
             overlay.classList.add('fade-out');
 
-            // Wait 1.5 seconds for the animation to travel to the corner
+            // 3. START THE BACKGROUND VIDEO!
+            heroVideo.play();
+
+            // 4. Finish the logo handoff 1.5 seconds later
             setTimeout(() => {
-                // Delete the moving fake logo
-                overlay.style.display = 'none';
-                
-                // 2. Instantly reveal the real logo in the exact same spot!
-                realLogo.classList.add('reveal');
-                
+                overlay.style.display = 'none'; // Delete overlay
+                realLogo.classList.add('reveal'); // Turn on real logo
             }, 1500); 
         };
 
-        // Trigger the animation after exactly 4 seconds
+        // Start the intro transition exactly 4 seconds after page load
         setTimeout(startIntroTransition, 4000); 
+
+        // --- Hero Video Interactions ---
+        
+        // Listen to the hero video's internal clock
+        heroVideo.addEventListener('timeupdate', () => {
+            // Once the video hits 3 seconds, show the text
+            if (heroVideo.currentTime >= 3) {
+                heroText.classList.add('show-text');
+            }
+        });
+
+        // When the 9-second video ends, auto-scroll to the next section
+        heroVideo.addEventListener('ended', () => {
+            document.getElementById('featured').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
     });
 </script>
 </body>
