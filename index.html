@@ -523,53 +523,56 @@
     
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-        // Elements for Intro Overlay
+        // Elements
         const overlay = document.getElementById('intro-overlay');
-        const introVideo = document.getElementById('intro-video'); // The loading GIF
+        const introVideo = document.getElementById('intro-video'); 
         const realLogo = document.querySelector('.logo-wrap'); 
-
-        // Elements for Hero Video
         const heroVideo = document.getElementById('hero-video');
         const heroText = document.getElementById('hero-text');
 
-        // The Master Function that triggers at 4 seconds
+        // The Master Transition
         const startIntroTransition = () => {
-            // 1. Swap the looping GIF to the static PNG
-            introVideo.src = "logo.png"; 
+            if (introVideo) introVideo.src = "logo.png"; 
 
-            // 2. Start the shrink and fade animations
-            introVideo.classList.add('shrink');
-            overlay.classList.add('fade-out');
+            if (introVideo) introVideo.classList.add('shrink');
+            if (overlay) overlay.classList.add('fade-out');
 
-            // 3. START THE BACKGROUND VIDEO!
-            heroVideo.play();
+            // Try to play the background video
+            if (heroVideo) {
+                // Catch any errors if the video is missing or blocked
+                heroVideo.play().catch(e => console.log("Video couldn't play automatically."));
+            }
 
-            // 4. Finish the logo handoff 1.5 seconds later
             setTimeout(() => {
-                overlay.style.display = 'none'; // Delete overlay
-                realLogo.classList.add('reveal'); // Turn on real logo
+                if (overlay) overlay.style.display = 'none'; 
+                if (realLogo) realLogo.classList.add('reveal'); 
             }, 1500); 
+            
+            // THE TEXT FAILSAFE: 
+            // 3 seconds after the intro finishes, force the text to appear NO MATTER WHAT.
+            setTimeout(() => {
+                if (heroText) heroText.classList.add('show-text');
+            }, 3000);
         };
 
-        // Start the intro transition exactly 4 seconds after page load
+        // Start intro exactly 4 seconds after page load
         setTimeout(startIntroTransition, 4000); 
 
         // --- Hero Video Interactions ---
-        
-        // Listen to the hero video's internal clock
-        heroVideo.addEventListener('timeupdate', () => {
-            // Once the video hits 3 seconds, show the text
-            if (heroVideo.currentTime >= 3) {
-                heroText.classList.add('show-text');
-            }
-        });
-
-        // When the 9-second video ends, auto-scroll to the next section
-        heroVideo.addEventListener('ended', () => {
-            document.getElementById('featured').scrollIntoView({ 
-                behavior: 'smooth' 
+        if (heroVideo) {
+            heroVideo.addEventListener('timeupdate', () => {
+                if (heroVideo.currentTime >= 3) {
+                    if (heroText) heroText.classList.add('show-text');
+                }
             });
-        });
+
+            heroVideo.addEventListener('ended', () => {
+                const featuredSection = document.getElementById('featured');
+                if (featuredSection) {
+                    featuredSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
     });
 </script>
 </body>
