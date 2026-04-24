@@ -204,17 +204,23 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Crops the video perfectly to fill the screen without squishing it */
-    z-index: -1; /* Pushes the video behind the text */
-    filter: brightness(0.7); /* Slightly darkens the video so your white text is readable */
+    object-fit: cover; 
+    
+    /* FIX: Changed from -1 to 0 so it sits ON TOP of the gray background */
+    z-index: 0; 
+    
+    filter: brightness(0.7); 
 }
 
 /* The invisible text box waiting to be revealed */
 .hero-content {
     opacity: 0;
-    transform: translateY(30px); /* Starts slightly lower for a smooth floating-up effect */
-    transition: all 1.5s ease; /* Super smooth 1.5 second fade in */
-    z-index: 1; 
+    transform: translateY(30px); 
+    transition: all 1.5s ease; 
+    
+    /* FIX: Make sure the text sits completely in front of the video */
+    position: relative;
+    z-index: 2; 
 }
 
 /* The class our JavaScript will add at 3 seconds */
