@@ -19,11 +19,10 @@
 
 /* --- Typewriter Effect for Letters --- */
 .letter {
-    opacity: 0;
-    /* No transitions here, so the letters snap in instantly! */
+display: none; /* FIX: Makes the hidden letters take up zero space */
 }
 .letter.typed {
-    opacity: 1;
+display: inline-block; /* FIX: Makes them take up space one-by-one as they type */
 }
 
 /* The Blinking Cursor */
@@ -581,6 +580,13 @@
     </footer>
     
 <script>
+
+    // 1. Force the page to the very top on reload
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
   document.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById('intro-overlay');
     const introVideo = document.getElementById('intro-video'); 
