@@ -580,7 +580,6 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
     </footer>
     
 <script>
-    // 1. Force the page to the very top on reload
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
@@ -593,7 +592,6 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
         const heroVideo = document.getElementById('hero-video');
         const btnWrap = document.getElementById('hero-btn-wrap');
 
-        // --- TEXT SHATTERING LOGIC ---
         const shatterLetters = (id) => {
             const el = document.getElementById(id);
             if (!el) return; 
@@ -608,12 +606,10 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
             el.innerHTML = text.split(' ').map(word => `<span class="word">${word}</span>`).join('');
         };
 
-        // Shatter the text immediately on load
         shatterLetters('animate-letters');
         shatterWords('animate-words-title');
         shatterWords('animate-words-p');
 
-        // --- THE MASTER TRANSITION ---
         const startIntroTransition = () => {
             if (introVideo) introVideo.src = "logo.png"; 
             if (introVideo) introVideo.classList.add('shrink');
@@ -629,26 +625,10 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
             }, 1500); 
         };
 
-        setTimeout(startIntroTransition, 4000); 
-
-        // --- TRIGGER TEXT ANIMATION AT 2 SECONDS ---
-        let textAnimated = false;
-        if (heroVideo) {
-            heroVideo.addEventListener('timeupdate', () => {
-                if (heroVideo.currentTime >= 2 && !textAnimated) {
-                    textAnimated = true;
-                    animateEverything();
-                }
-            });
-        }
-
         const animateEverything = () => {
             const titleEl = document.getElementById('animate-letters');
-            
-            // Turn on the blinking cursor!
             if (titleEl) titleEl.classList.add('start-cursor'); 
 
-            // 1. Typewriter Letters ("Beautiful websites.")
             const letters = document.querySelectorAll('.letter');
             const typingSpeed = 80; 
 
@@ -658,41 +638,45 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
                 }, i * typingSpeed); 
             });
 
-            // Calculate exactly when the typing will finish
             const startWordsDelay = (letters.length * typingSpeed) + 400; 
 
-            // Hide the cursor exactly when the other words start sliding in
             setTimeout(() => {
                 if (titleEl) titleEl.classList.add('stop-cursor'); 
             }, startWordsDelay);
 
-            // 2. Sliding Words ("Zero bridal breakdown.")
             const words = document.querySelectorAll('.word');
-            
             words.forEach((w, i) => {
                 setTimeout(() => { 
                     w.classList.add('reveal-text'); 
                 }, startWordsDelay + (i * 150)); 
             });
 
-            // Calculate the exact moment all words are fully on screen
             const animationFinishTime = startWordsDelay + (words.length * 150) + 500;
 
-            // 3. Fade in button last
             setTimeout(() => {
                 if (btnWrap) btnWrap.style.opacity = '1';
             }, animationFinishTime);
 
-            // 4. NEW SCROLL TRIGGER (Wait exactly 5 seconds for reading!)
+            // Wait 5 seconds after animation finishes, then scroll down
             setTimeout(() => {
                 const featuredSection = document.getElementById('featured');
                 if (featuredSection) {
                     featuredSection.scrollIntoView({ behavior: 'smooth' });
                 }
-            }, animationFinishTime + 5000); // 5000 = 5 seconds delay after animation ends
+            }, animationFinishTime + 5000); 
         };
-        
-        // (The old heroVideo.addEventListener('ended') block was completely deleted from here!)
+
+        // ==========================================
+        // --- THE MASTER TIMELINE ---
+        // ==========================================
+
+        // 1. Move Logo & Play Video at 4.0 seconds
+        setTimeout(startIntroTransition, 4000); 
+
+        // 2. Start Text Animation at 4.5 seconds 
+        // (Exactly 1 second before the 1.5s logo journey finishes at 5.5s!)
+        setTimeout(animateEverything, 4500); 
+
     });
 </script>
 </body>
