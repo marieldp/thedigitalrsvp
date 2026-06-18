@@ -154,20 +154,60 @@
   }
   
   /* Scale laptop container for mobile */
-  .mockup-laptop-container {
-    width: 90vw; 
-    height: calc(90vw * 0.69); 
-    flex-shrink: 0;
-  }
+.mockup-laptop-container {
+  position: relative; 
+  width: 750px;       
+  height: 520px;      
+  background: #000;   
+  border-radius: 12px;
+  overflow: hidden;   
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+.laptop-screen-bezel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 380px;      
+  padding: 10px 10px 0px 10px; 
+  background: #000;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.laptop-physical-base {
+  position: absolute;
+  bottom: 0;          
+  left: 0;
+  width: 100%;        
+  height: 140px;      
+  display: block;
+  z-index: 2;         
+}
   
-  /* Scale phone for mobile */
-  .mockup-mobile {
-    width: 60vw;
-    height: calc(60vw * 2);
-    flex-shrink: 0;
-  }
+.mockup-mobile {
+  width: 200px;
+  height: 400px;
+  padding: 12px;
+  background: #222;
+  border-radius: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  position: relative;
+}
+/* --- THE SCREENS & VIDEOS (Restored) --- */
+.screen-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
+.screen-content video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+}
 
 
 /* --- THE BUTTON --- */
@@ -608,8 +648,8 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
     </div>
 </section>
 
-<section class="featured-showcase">
-  <!-- The New 2-Column Wrapper -->
+<section id="featured" class="featured-showcase">
+    <!-- The New 2-Column Wrapper -->
   <div class="showcase-content">
 
     <!-- LEFT COLUMN: The Devices -->
@@ -660,7 +700,7 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
       <!-- The Action Button -->
       <a href="#designs" class="design-btn">See Available Designs</a>
     </div>
-
+  </div>
 </section>
     <section id="process" class="process-section">
         <div class="container">
