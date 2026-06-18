@@ -120,40 +120,7 @@
   transform: translateY(-2px);
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 992px) {
-  
-  /* Flips the layout to vertical */
-  .showcase-content {
-    flex-direction: column;  /* Stacks elements top-to-bottom */
-    gap: 50px;
-  }
-
-  /* Since the HTML has Visuals first, they will naturally sit on top of the Text! */
-  
-  .showcase-text {
-    text-align: center;
-    padding: 0 20px;
-  }
-
-  /* Centers the checkmarks on mobile */
-  .package-perks li {
-    text-align: left;
-    display: inline-block;
-  }
-  
-  .package-perks {
-    text-align: center;
-  }
-
-  /* Your existing mobile stacking logic for the laptop and phone goes here */
-  .devices-container {
-    flex-direction: column; 
-    align-items: center;    
-    gap: 50px;              
-  }
-  
-  /* Scale laptop container for mobile */
+/* --- THE DEVICES (Desktop Core Rules) --- */
 .mockup-laptop-container {
   position: relative; 
   width: 750px;       
@@ -163,6 +130,7 @@
   overflow: hidden;   
   box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
+
 .laptop-screen-bezel {
   position: absolute;
   top: 0;
@@ -174,6 +142,7 @@
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
+
 .laptop-physical-base {
   position: absolute;
   bottom: 0;          
@@ -183,7 +152,7 @@
   display: block;
   z-index: 2;         
 }
-  
+
 .mockup-mobile {
   width: 200px;
   height: 400px;
@@ -193,7 +162,7 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   position: relative;
 }
-/* --- THE SCREENS & VIDEOS (Restored) --- */
+
 .screen-content {
   position: relative;
   width: 100%;
@@ -209,6 +178,51 @@
   object-fit: contain; 
 }
 
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 992px) {
+  
+  /* Flips the layout to vertical */
+  .showcase-content {
+    flex-direction: column;  
+    gap: 50px;
+  }
+  
+  .showcase-text {
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .package-perks li {
+    text-align: left;
+    display: inline-block;
+  }
+  
+  .package-perks {
+    text-align: center;
+  }
+
+  /* Stacks laptop and phone */
+  .devices-container {
+    flex-direction: column; 
+    align-items: center;    
+    gap: 50px;              
+  }
+  
+  /* Scales laptop container for mobile */
+  .mockup-laptop-container {
+    width: 90vw; 
+    height: calc(90vw * 0.69); 
+    flex-shrink: 0;
+  }
+  
+  /* Scales phone for mobile */
+  .mockup-mobile {
+    width: 60vw;
+    height: calc(60vw * 2);
+    flex-shrink: 0;
+  }
+}
+/* <-- That curly bracket right above is what was missing! */
 
 /* --- THE BUTTON --- */
 .design-btn {
