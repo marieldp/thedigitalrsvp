@@ -47,13 +47,44 @@
   scroll-snap-align: center;
 }
 
-/* Laptop Dimensions */
+/* --- THE REVISED LAPTOP MOCKUP --- */
 .mockup-laptop {
   width: 600px;
-  height: 360px;
-  padding: 15px 15px 30px 15px; /* Thicker bottom for laptop base */
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  height: 380px; /* Adjusted height to fix the video aspect ratio */
+  /* Thinner top/sides (10px) to show more video, massive bottom (50px) for the base */
+  padding: 10px 10px 50px 10px; 
+  border-radius: 16px;
+  border-bottom: 8px solid #444; /* Gives the laptop a 3D "lip" at the front */
+}
+
+/* The magic trick: A tiny CSS touchpad to make it look like a real laptop base! */
+.mockup-laptop::after {
+  content: '';
+  position: absolute;
+  bottom: 15px; /* Places it directly in that thick bottom padding */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 10px;
+  background: #3a3a3a;
+  border-radius: 4px;
+}
+
+/* --- THE SCREENS & VIDEOS --- */
+.screen-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 4px; /* Adds a tiny curve to the inner screen itself */
+  overflow: hidden;
+}
+
+.screen-content video {
+  width: 100%;
+  height: 100%;
+  /* Changed from 'cover' to 'contain' so it never crops your video edges */
+  object-fit: contain; 
 }
 
 /* Mobile Dimensions */
@@ -64,21 +95,7 @@
   border-radius: 30px; /* Rounder edges for phones */
 }
 
-/* --- THE SCREENS & VIDEOS --- */
-.screen-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  overflow: hidden;
-}
 
-/* Makes sure the video perfectly covers the screen area */
-.screen-content video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-}
 
 /* --- THE BUTTON --- */
 .design-btn {
@@ -97,20 +114,19 @@
   background-color: #c09090;
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
 /* --- MOBILE RESPONSIVENESS (Stacked Vertically) --- */
 @media (max-width: 768px) {
   .devices-container {
-    flex-direction: column; /* Stacks them top-to-bottom */
-    align-items: center;    /* Centers them on the screen */
-    gap: 50px;              /* Adds space between laptop and phone */
-    overflow-x: hidden;     /* Kills the horizontal swipe completely */
+    flex-direction: column; 
+    align-items: center;    
+    gap: 50px;              
+    overflow-x: hidden;     
   }
   
-  /* Fits the laptop to the phone screen */
+  /* Fits the laptop perfectly with the new dimensions */
   .mockup-laptop {
     width: 90vw; 
-    height: calc(90vw * 0.6); 
+    height: calc(90vw * 0.65); 
     flex-shrink: 0;
   }
 
