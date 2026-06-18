@@ -121,34 +121,75 @@
 }
 
 /* --- THE DEVICES (Desktop Core Rules) --- */
-.mockup-laptop-container {
-  width: 750px;       
-  /* FIX 1: We use Flexbox to stack them naturally instead of forcing fixed heights */
+
+/* --- THE NEW IMAC MOCKUP --- */
+.mockup-imac-container {
   display: flex;
   flex-direction: column;
-  /* FIX 2: Transparent background prevents black bleeding around the keyboard edges */
-  background: transparent;   
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  border-radius: 12px;
+  align-items: center;
+  width: 650px; /* Slightly scaled down so it pairs perfectly with the phone */
+  position: relative;
 }
 
-.laptop-screen-bezel {
+/* The Black Glass Display Area */
+.imac-display {
   width: 100%;
-  /* FIX 3: Aspect-ratio gives us a perfect laptop screen shape automatically */
-  aspect-ratio: 16 / 10;      
-  padding: 15px 15px 0px 15px; 
-  background: #000;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  background: #111; 
+  padding: 16px; /* The thickness of the black bezels */
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 3;
 }
 
-.laptop-physical-base {
-  width: 100%;        
-  height: auto;      
-  display: block;
-  /* FIX 4: Pulls the keyboard up by 1 pixel to seamlessly weld it to the screen bezel */
-  margin-top: -1px; 
-  z-index: 2;         
+/* The Silver Aluminum Chin */
+.imac-chin {
+  width: 100%;
+  height: 55px;
+  /* Adds a subtle metallic gradient */
+  background: linear-gradient(to bottom, #f8f8f8, #e0e0e0);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  z-index: 3;
+}
+
+/* The Metal Neck */
+.imac-stand {
+  width: 110px;
+  height: 70px;
+  background: linear-gradient(to bottom, #d0d0d0, #a8a8a8);
+  z-index: 1;
+  position: relative;
+  margin-top: -10px; /* Tucks it slightly behind the chin */
+}
+
+/* The Desktop Foot */
+.imac-base {
+  width: 180px;
+  height: 10px;
+  background: #999;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  z-index: 2;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* --- THE SCREENS & VIDEOS (Updated for iMac) --- */
+.screen-content {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* The perfect widescreen monitor shape */
+  background: #000;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.screen-content video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: top;
 }
 
 .mockup-mobile {
@@ -671,16 +712,25 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
     <div class="showcase-visuals">
       <div class="devices-container">
         
-        <!-- Realistic Laptop Mockup -->
-        <div class="device mockup-laptop-container">
-          <img src="laptopend.png" alt="Laptop Keyboard Base" class="laptop-physical-base">
-          <div class="laptop-screen-bezel">
+ <!-- Realistic iMac Mockup -->
+        <div class="device mockup-imac-container">
+          
+          <!-- The Monitor Body (Black Bezels + Screen) -->
+          <div class="imac-display">
             <div class="screen-content">
               <video autoplay loop muted playsinline>
                 <source src="laptop.mp4" type="video/mp4">
               </video>
             </div>
           </div>
+          
+          <!-- The Silver Aluminum Chin -->
+          <div class="imac-chin"></div>
+          
+          <!-- The Metal Stand and Base -->
+          <div class="imac-stand"></div>
+          <div class="imac-base"></div>
+
         </div>
 
         <!-- Mobile Phone Mockup -->
