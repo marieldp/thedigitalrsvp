@@ -187,29 +187,7 @@
   background-color: #c09090;
 }
 
-/* --- MOBILE RESPONSIVENESS (Stacked Vertically) --- */
-@media (max-width: 768px) {
-  .devices-container {
-    flex-direction: column; 
-    align-items: center;    
-    gap: 50px;              
-    overflow-x: hidden;     
-  }
-  
-  /* Fits the laptop perfectly with the new dimensions */
-  .mockup-laptop {
-    width: 90vw; 
-    height: calc(90vw * 0.65); 
-    flex-shrink: 0;
-  }
 
-  /* Fits the phone mockup right underneath */
-  .mockup-mobile {
-    width: 60vw;
-    height: calc(60vw * 2);
-    flex-shrink: 0;
-  }
-}
 /* --- Typewriter Effect for Letters --- */
 .letter {
 display: none; /* FIX: Makes the hidden letters take up zero space */
