@@ -193,13 +193,16 @@
 }
 
 .mockup-mobile {
-  width: 200px;
-  height: 400px;
-  padding: 12px;
+  width: 150px;       /* Shrunk down from 200px */
+  height: 310px;      /* Shrunk down from 400px to keep the phone shape */
+  padding: 10px;      /* Slightly thinner black bezel to match the smaller size */
   background: #222;
-  border-radius: 30px;
+  border-radius: 24px; /* Scaled down the corner roundness slightly */
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   position: relative;
+/* Add this inside .mockup-mobile ONLY if you want to pull it closer to the iMac */
+  margin-left: -20px; 
+  z-index: 5; /* Makes sure the phone sits on top if they overlap */
 }
 
 .screen-content {
