@@ -201,8 +201,7 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   position: relative;
 /* Add this inside .mockup-mobile ONLY if you want to pull it closer to the iMac */
-  margin-left: -20px; 
-  z-index: 5; /* Makes sure the phone sits on top if they overlap */
+
 }
 
 .screen-content {
@@ -712,17 +711,25 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
 </section>
 
 <section id="featured" class="featured-showcase">
-    <!-- The New 2-Column Wrapper -->
+  
+  <!-- NEW: Center-aligned Header ABOVE the columns -->
+  <div class="showcase-header">
+    <h4 class="section-subtitle">Featured Package</h4>
+    <h2 class="package-title">The "Full-Service Concierge" Package</h2>
+    <p class="package-description">
+      <strong>Best for busy couples who want a dedicated digital manager for their guest list.</strong>
+    </p>
+  </div>
+
+  <!-- The 2-Column Wrapper -->
   <div class="showcase-content">
 
     <!-- LEFT COLUMN: The Devices -->
     <div class="showcase-visuals">
       <div class="devices-container">
         
- <!-- Realistic iMac Mockup -->
+        <!-- Realistic iMac Mockup -->
         <div class="device mockup-imac-container">
-          
-          <!-- The Monitor Body (Black Bezels + Screen) -->
           <div class="imac-display">
             <div class="screen-content">
               <video autoplay loop muted playsinline>
@@ -730,14 +737,9 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
               </video>
             </div>
           </div>
-          
-          <!-- The Silver Aluminum Chin -->
           <div class="imac-chin"></div>
-          
-          <!-- The Metal Stand and Base -->
           <div class="imac-stand"></div>
           <div class="imac-base"></div>
-
         </div>
 
         <!-- Mobile Phone Mockup -->
@@ -752,13 +754,9 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
       </div>
     </div>
 
- <!-- RIGHT COLUMN: Package Details -->
+    <!-- RIGHT COLUMN: The Checklist -->
     <div class="showcase-text">
-      <h4 class="section-subtitle">Featured Package</h4>
-      <h2 class="package-title">The "Full-Service Concierge" Package</h2>
-      
       <p class="package-description">
-        <strong>Best for busy couples who want a dedicated digital manager for their guest list.</strong><br><br>
         Includes everything in the Premium Tech Package, PLUS:
       </p>
 
@@ -772,8 +770,12 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
       <!-- The Action Button -->
       <a href="#designs" class="design-btn">See Available Designs</a>
     </div>
+
   </div>
 </section>
+
+
+    
     <section id="process" class="process-section">
         <div class="container">
             <div class="process-header">
