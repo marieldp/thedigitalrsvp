@@ -16,83 +16,156 @@
             --border: #ece4db;      
             --gray: #9E9E9E;        
         }
-/* --- OVERALL SECTION --- */
+/* --- OVERALL SECTION & 2-COLUMN LAYOUT --- */
 .featured-showcase {
-  text-align: center;
-  padding: 40px 20px;
+  padding: 80px 20px;
   background-color: #fcfcfc;
+  overflow: hidden; /* Prevents layout breaking on small screens */
 }
 
-/* --- THE CONTAINER (Side-by-side Desktop, Swipeable Mobile) --- */
+.showcase-content {
+  display: flex;
+  flex-direction: row;       /* Desktop: Left and Right */
+  align-items: center;       /* Centers both columns vertically */
+  justify-content: center;
+  gap: 60px;                 /* Breathing room between visuals and text */
+  max-width: 1300px;         /* Keeps it contained on massive monitors */
+  margin: 0 auto;
+}
+
+/* --- THE LEFT COLUMN (Visuals) --- */
+.showcase-visuals {
+  flex: 1.2;                 /* Gives the images slightly more room than the text */
+}
+
+/* Devices container adjustment for the new side-by-side look */
 .devices-container {
   display: flex;
-  justify-content: center;
-  align-items: flex-end; /* Aligns the bottoms of the laptop and phone */
-  gap: 30px;
+  flex-direction: row;
+  align-items: flex-end; 
+  gap: 20px;
+}
+
+/* --- THE RIGHT COLUMN (Text Details) --- */
+.showcase-text {
+  flex: 1;
+  text-align: left;
+}
+
+.section-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #a0a0a0;
+  margin-bottom: 10px;
+}
+
+.package-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.package-description {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Custom Checkmark List */
+.package-perks {
+  list-style: none;
+  padding: 0;
   margin-bottom: 40px;
-  
-  /* Crucial for the mobile scroll feature! */
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 20px;
 }
 
-/* --- THE DEVICES (Basic CSS Frames) --- */
-.device {
+.package-perks li {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 15px;
   position: relative;
-  background: #222;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  flex-shrink: 0; /* Prevents them from squishing on mobile */
-  scroll-snap-align: center;
+  padding-left: 35px;
 }
 
-/* --- THE REVISED LAPTOP MOCKUP --- */
-.mockup-laptop {
-  width: 600px;
-  height: 380px; /* Adjusted height to fix the video aspect ratio */
-  /* Thinner top/sides (10px) to show more video, massive bottom (50px) for the base */
-  padding: 10px 10px 50px 10px; 
-  border-radius: 16px;
-  border-bottom: 8px solid #444; /* Gives the laptop a 3D "lip" at the front */
-}
-
-/* The magic trick: A tiny CSS touchpad to make it look like a real laptop base! */
-.mockup-laptop::after {
-  content: '';
+/* Adds your signature pink as a custom checkmark bullet */
+.package-perks li::before {
+  content: '✓';
   position: absolute;
-  bottom: 15px; /* Places it directly in that thick bottom padding */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 10px;
-  background: #3a3a3a;
-  border-radius: 4px;
+  left: 0;
+  color: #d4a5a5; 
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-/* --- THE SCREENS & VIDEOS --- */
-.screen-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  border-radius: 4px; /* Adds a tiny curve to the inner screen itself */
-  overflow: hidden;
+/* --- THE BUTTON --- */
+.design-btn {
+  display: inline-block;
+  background-color: #d4a5a5;
+  color: #fff;
+  padding: 16px 36px;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', serif;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 165, 165, 0.4);
 }
 
-.screen-content video {
-  width: 100%;
-  height: 100%;
-  /* Changed from 'cover' to 'contain' so it never crops your video edges */
-  object-fit: contain; 
+.design-btn:hover {
+  background-color: #c09090;
+  transform: translateY(-2px);
 }
 
-/* Mobile Dimensions */
-.mockup-mobile {
-  width: 200px;
-  height: 400px;
-  padding: 12px;
-  border-radius: 30px; /* Rounder edges for phones */
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 992px) {
+  
+  /* Flips the layout to vertical */
+  .showcase-content {
+    flex-direction: column;  /* Stacks elements top-to-bottom */
+    gap: 50px;
+  }
+
+  /* Since the HTML has Visuals first, they will naturally sit on top of the Text! */
+  
+  .showcase-text {
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  /* Centers the checkmarks on mobile */
+  .package-perks li {
+    text-align: left;
+    display: inline-block;
+  }
+  
+  .package-perks {
+    text-align: center;
+  }
+
+  /* Your existing mobile stacking logic for the laptop and phone goes here */
+  .devices-container {
+    flex-direction: column; 
+    align-items: center;    
+    gap: 50px;              
+  }
+  
+  /* Scale laptop container for mobile */
+  .mockup-laptop-container {
+    width: 90vw; 
+    height: calc(90vw * 0.69); 
+    flex-shrink: 0;
+  }
+  
+  /* Scale phone for mobile */
+  .mockup-mobile {
+    width: 60vw;
+    height: calc(60vw * 2);
+    flex-shrink: 0;
+  }
 }
 
 
@@ -557,34 +630,61 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
     </div>
 </section>
 
-<section id="featured" class="featured">
-
 <section class="featured-showcase">
-  
-  <div class="devices-container">
-    
-    <div class="device mockup-laptop">
-      <div class="screen-content">
-        <video autoplay loop muted playsinline>
-          <source src="laptop.mp4" type="video/mp4">
-        </video>
+  <!-- The New 2-Column Wrapper -->
+  <div class="showcase-content">
+
+    <!-- LEFT COLUMN: The Devices -->
+    <div class="showcase-visuals">
+      <div class="devices-container">
+        
+        <!-- Realistic Laptop Mockup -->
+        <div class="device mockup-laptop-container">
+          <img src="laptopend.png" alt="Laptop Keyboard Base" class="laptop-physical-base">
+          <div class="laptop-screen-bezel">
+            <div class="screen-content">
+              <video autoplay loop muted playsinline>
+                <source src="YOUR_DESKTOP_VIDEO_URL.mp4#t=4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Phone Mockup -->
+        <div class="device mockup-mobile">
+          <div class="screen-content">
+            <video autoplay loop muted playsinline>
+              <source src="YOUR_MOBILE_VIDEO_URL.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <div class="device mockup-mobile">
-       <div class="screen-content">
-        <video autoplay loop muted playsinline>
-          <source src="mobile.mp4" type="video/mp4">
-        </video>
-      </div>
+    <!-- RIGHT COLUMN: Package Details -->
+    <div class="showcase-text">
+      <h4 class="section-subtitle">Featured Package</h4>
+      <h2 class="package-title">The Concierge Package</h2>
+      
+      <p class="package-description">
+        The ultimate digital experience for modern couples. We handle all the technical heavy lifting so you can focus on your big day.
+      </p>
+
+      <ul class="package-perks">
+        <li>Custom, Fully Responsive Website Design</li>
+        <li>Automated Weekly RSVP Headcount Reports</li>
+        <li>VIP Digital Guestbook Extraction</li>
+        <li>Final Caterer & Venue Turnover Roster</li>
+        <li>Flawless Plus-One & Dietary Tracking</li>
+      </ul>
+
+      <!-- The Action Button is now attached directly to the details -->
+      <a href="#designs" class="design-btn">See Available Designs</a>
     </div>
 
   </div>
-
-  <a href="#designs" class="design-btn">See Available Designs</a>
-
 </section>
-
     <section id="process" class="process-section">
         <div class="container">
             <div class="process-header">
