@@ -16,7 +16,101 @@
             --border: #ece4db;      
             --gray: #9E9E9E;        
         }
+/* --- OVERALL SECTION --- */
+.featured-showcase {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fcfcfc;
+}
 
+/* --- THE CONTAINER (Side-by-side Desktop, Swipeable Mobile) --- */
+.devices-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Aligns the bottoms of the laptop and phone */
+  gap: 30px;
+  margin-bottom: 40px;
+  
+  /* Crucial for the mobile scroll feature! */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 20px;
+}
+
+/* --- THE DEVICES (Basic CSS Frames) --- */
+.device {
+  position: relative;
+  background: #222;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  flex-shrink: 0; /* Prevents them from squishing on mobile */
+  scroll-snap-align: center;
+}
+
+/* Laptop Dimensions */
+.mockup-laptop {
+  width: 600px;
+  height: 360px;
+  padding: 15px 15px 30px 15px; /* Thicker bottom for laptop base */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Mobile Dimensions */
+.mockup-mobile {
+  width: 200px;
+  height: 400px;
+  padding: 12px;
+  border-radius: 30px; /* Rounder edges for phones */
+}
+
+/* --- THE SCREENS & VIDEOS --- */
+.screen-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+/* Makes sure the video perfectly covers the screen area */
+.screen-content video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+/* --- THE BUTTON --- */
+.design-btn {
+  display: inline-block;
+  background-color: #d4a5a5; /* Your signature pink */
+  color: #fff;
+  padding: 15px 35px;
+  font-size: 1.1rem;
+  font-family: 'Playfair Display', serif;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.design-btn:hover {
+  background-color: #c09090;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .devices-container {
+    justify-content: flex-start; /* Allows scrolling from the left edge */
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  /* Make the laptop slightly smaller for easier mobile swiping */
+  .mockup-laptop {
+    width: 85vw; 
+    height: calc(85vw * 0.6); 
+  }
+}
 /* --- Typewriter Effect for Letters --- */
 .letter {
 display: none; /* FIX: Makes the hidden letters take up zero space */
@@ -439,24 +533,31 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
 
 <section id="featured" class="featured">
 
-    <section id="featured" class="featured">
-        <div class="container featured-grid">
-            <div class="featured-image">
-                [Insert Mockup of Concierge Website Here]
-            </div>
-            <div class="featured-content">
-                <h2>The Concierge Experience</h2>
-                <p>A completely stress-free, automated, and beautiful digital hub for your most important guests. Hand over your spreadsheet, and let me be your dedicated digital manager.</p>
-                <ul class="featured-list">
-                    <li>Strict Anti-Gatecrasher Tech (Fixed Seat Counts)</li>
-                    <li>Continuous Database & Guest List Management</li>
-                    <li>Weekly RSVP Reports Delivered to Your Inbox</li>
-                    <li>Final "Ready-for-Caterer" Headcount Report</li>
-                </ul>
-                <a href="booking-concierge.html" class="btn btn-primary" style="display:inline-block; margin-top:0;">Avail The Concierge</a>
-            </div>
-        </div>
-    </section>
+<section class="featured-showcase">
+  
+  <div class="devices-container">
+    
+    <div class="device mockup-laptop">
+      <div class="screen-content">
+        <video autoplay loop muted playsinline>
+          <source src="laptop.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <div class="device mockup-mobile">
+       <div class="screen-content">
+        <video autoplay loop muted playsinline>
+          <source src="mobile.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="#designs" class="design-btn">See Available Designs</a>
+
+</section>
 
     <section id="process" class="process-section">
         <div class="container">
