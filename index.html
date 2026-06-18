@@ -98,17 +98,27 @@
 }
 
 /* --- MOBILE RESPONSIVENESS --- */
+/* --- MOBILE RESPONSIVENESS (Stacked Vertically) --- */
 @media (max-width: 768px) {
   .devices-container {
-    justify-content: flex-start; /* Allows scrolling from the left edge */
-    padding-left: 20px;
-    padding-right: 20px;
+    flex-direction: column; /* Stacks them top-to-bottom */
+    align-items: center;    /* Centers them on the screen */
+    gap: 50px;              /* Adds space between laptop and phone */
+    overflow-x: hidden;     /* Kills the horizontal swipe completely */
   }
   
-  /* Make the laptop slightly smaller for easier mobile swiping */
+  /* Fits the laptop to the phone screen */
   .mockup-laptop {
-    width: 85vw; 
-    height: calc(85vw * 0.6); 
+    width: 90vw; 
+    height: calc(90vw * 0.6); 
+    flex-shrink: 0;
+  }
+
+  /* Fits the phone mockup right underneath */
+  .mockup-mobile {
+    width: 60vw;
+    height: calc(60vw * 2);
+    flex-shrink: 0;
   }
 }
 /* --- Typewriter Effect for Letters --- */
