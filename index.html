@@ -250,12 +250,16 @@
     gap: 50px;              
   }
   
- /* Scales laptop container for mobile */
-  .mockup-laptop-container {
+/* Scales iMac container for mobile */
+  .mockup-imac-container {
     width: 90vw; 
-    height: auto; /* Let the aspect-ratio do the mathematical heavy lifting */
     flex-shrink: 0;
   }
+  
+  /* Shrinks the metal stand components slightly on phones */
+  .imac-chin { height: 40px; }
+  .imac-stand { height: 50px; width: 80px; }
+  .imac-base { width: 130px; height: 8px; }
   
   /* Scales phone for mobile */
   .mockup-mobile {
