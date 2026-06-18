@@ -29,10 +29,11 @@
   overflow: hidden; /* Prevents layout breaking on small screens */
 }
 
+/* --- OVERALL SECTION & 2-COLUMN LAYOUT --- */
 .showcase-content {
   display: flex;
   flex-direction: row;       /* Desktop: Left and Right */
-  align-items: center;       /* Centers both columns vertically */
+  align-items: flex-start;   /* <--- THE FIX: Aligns both columns to the top! */
   justify-content: center;
   gap: 60px;                 /* Breathing room between visuals and text */
   max-width: 1300px;         /* Keeps it contained on massive monitors */
