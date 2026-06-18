@@ -122,34 +122,32 @@
 
 /* --- THE DEVICES (Desktop Core Rules) --- */
 .mockup-laptop-container {
-  position: relative; 
   width: 750px;       
-  height: 520px;      
-  background: #000;   
+  /* FIX 1: We use Flexbox to stack them naturally instead of forcing fixed heights */
+  display: flex;
+  flex-direction: column;
+  /* FIX 2: Transparent background prevents black bleeding around the keyboard edges */
+  background: transparent;   
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   border-radius: 12px;
-  overflow: hidden;   
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
 .laptop-screen-bezel {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 380px;      
-  padding: 10px 10px 0px 10px; 
+  /* FIX 3: Aspect-ratio gives us a perfect laptop screen shape automatically */
+  aspect-ratio: 16 / 10;      
+  padding: 15px 15px 0px 15px; 
   background: #000;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
 
 .laptop-physical-base {
-  position: absolute;
-  bottom: 0;          
-  left: 0;
   width: 100%;        
-  height: 140px;      
+  height: auto;      
   display: block;
+  /* FIX 4: Pulls the keyboard up by 1 pixel to seamlessly weld it to the screen bezel */
+  margin-top: -1px; 
   z-index: 2;         
 }
 
@@ -167,15 +165,18 @@
   position: relative;
   width: 100%;
   height: 100%;
-  background: #111;
-  border-radius: 4px;
+  background: #000;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   overflow: hidden;
 }
 
 .screen-content video {
   width: 100%;
   height: 100%;
-  object-fit: contain; 
+  /* FIX 5: 'Cover' forces the video to fill 100% of the screen, killing the black void! */
+  object-fit: cover; 
+  object-position: top; /* Anchors the video to the top so your headers aren't cut off */
 }
 
 /* --- MOBILE RESPONSIVENESS --- */
@@ -208,10 +209,10 @@
     gap: 50px;              
   }
   
-  /* Scales laptop container for mobile */
+ /* Scales laptop container for mobile */
   .mockup-laptop-container {
     width: 90vw; 
-    height: calc(90vw * 0.69); 
+    height: auto; /* Let the aspect-ratio do the mathematical heavy lifting */
     flex-shrink: 0;
   }
   
