@@ -28,10 +28,10 @@
 
 /* --- Global Navigation Header --- */
         .main-nav {
-            position: relative; /* Changed from absolute to prevent layout overlapping */
-            width: 100%;
-            padding: 30px 40px 10px 40px; /* Snug top spacing */
-            background-color: var(--bg); /* Blends into the header color band */
+            position: absolute; /* Place it neatly over the background */
+            top: 20px;          /* Snug distance from top edge */
+            left: 40px;         /* Match home page alignment */
+            z-index: 10;
         }
 
         .logo-wrap {
@@ -48,9 +48,10 @@
         /* --- Elegant Hero Header --- */
         .order-header {
             text-align: center;
-            padding: 20px 24px 50px; /* Dropped from 140px to a crisp 20px! */
+            padding: 40px 24px 35px; /* Dropped drastically to sit tight near the top! */
             background-color: var(--bg); 
             border-bottom: 1px solid var(--border);
+            position: relative;
         }
         .order-header h1 {
             font-family: 'Playfair Display', serif;
