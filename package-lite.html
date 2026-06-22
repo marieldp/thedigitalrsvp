@@ -283,9 +283,10 @@
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="e.g., Taylor Smith" required>
                 </div>
-               <div class="form-group">
+                <div class="form-group">
                     <label for="viber">Contact Number / Viber</label>
-                    <input type="tel" id="viber" name="viber" placeholder="e.g., 0917XXXXXXX" maxlength="11" required
+                    <input type="tel" id="viber" name="viber" placeholder="e.g., 0917XXXXXXX" 
+                    minlength="11" maxlength="11" pattern="[0-9]{11}" required
                     oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                 </div>
                 <div class="form-group">
