@@ -26,41 +26,53 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Elegant Mini Header --- */
-        .order-header {
-            text-align: center;
-            padding: 60px 24px 30px;
-            background-color: var(--bg); /* Signature soft peach */
-            border-bottom: 1px solid var(--border);
+        /* --- Global Navigation Header --- */
+        .main-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 40px;
+            z-index: 10;
         }
 
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            text-decoration: none;
+        .logo-wrap {
             display: inline-block;
-            margin-bottom: 15px;
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        /* --- Elegant Hero Header --- */
+        .order-header {
+            text-align: center;
+            padding: 140px 24px 50px; /* Shifted down to give the upper-left logo room */
+            background-color: var(--bg); 
+            border-bottom: 1px solid var(--border);
         }
 
         .order-header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--text-dark);
             margin-bottom: 10px;
         }
 
         .price-tag {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 600;
             color: var(--text-dark);
+            letter-spacing: 0.5px;
         }
 
-        /* --- Two Column Split Layout --- */
+        /* --- Split Layout Layout --- */
         .order-container {
             max-width: 1100px;
-            margin: 50px auto;
+            margin: 60px auto;
             padding: 0 24px;
             display: grid;
             grid-template-columns: 1.1fr 1fr;
@@ -68,7 +80,7 @@
             align-items: flex-start;
         }
 
-        /* --- Left Side: Package Details --- */
+        /* --- Left Side: Content Perks --- */
         .package-summary h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
@@ -100,10 +112,10 @@
             left: 0;
             color: #d4a5a5;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
-        /* --- Right Side: Sleek Form --- */
+        /* --- Right Side: Form Block --- */
         .form-card {
             background-color: #fafaf8;
             border: 1px solid var(--border);
@@ -116,7 +128,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
             color: var(--text-dark);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .form-group {
@@ -150,7 +162,6 @@
             border-color: #d4a5a5;
         }
 
-        /* Fixed / unchangeable package style */
         .form-group select {
             background-color: #f0ede6;
             cursor: not-allowed;
@@ -176,69 +187,25 @@
             background-color: #d4a5a5;
         }
 
-        /* --- Mobile Responsiveness --- */
+        /* --- Mobile Layout Scaling --- */
         @media (max-width: 850px) {
-            .order-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                margin: 30px auto;
-            }
-            .order-header h1 { font-size: 2rem; }
+            .main-nav { padding: 20px; }
+            .nav-logo-img { height: 35px; }
+            .order-header { padding: 110px 24px 40px; }
+            .order-header h1 { font-size: 2.2rem; }
+            .order-container { grid-template-columns: 1fr; gap: 40px; margin: 40px auto; }
             .form-card { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
+    <nav class="main-nav">
+        <a href="index.html" class="logo-wrap">
+            <img src="logo.png" alt="TDR Logo" class="nav-logo-img">
+        </a>
+    </nav>
+
     <header class="order-header">
-        <a href="index.html" class="logo-text">The Digital RSVP</a>
         <h1>The "Lite" Experience</h1>
-        <div class="price-tag">₱1,800</div>
-    </header>
-
-    <main class="order-container">
-        
-        <section class="package-summary">
-            <h2>What's Included</h2>
-            <p>A pristine, elegant mobile-first invitation page meticulously tailored to showcase your essential wedding day configurations quickly and beautifully.</p>
-            
-            <ul class="inclusion-list">
-                <li><strong>1–2 Business Days Turnaround:</strong> Speed-built layout perfect for short-notice timelines.</li>
-                <li><strong>Sleek Single Page Layout:</strong> Clean editorial display of your venue, time, and ceremony attire rules.</li>
-                <li><strong>Digital Map Integration:</strong> Tap-to-open pinning for Google Maps or Waze so your guests never get lost.</li>
-                <li><strong>Essential Event Card:</strong> Elegant text blocks displaying your core countdown metric.</li>
-            </ul>
-        </section>
-
-        <section class="form-card">
-            <h3>Secure Your Slot</h3>
-            <form action="https://formspree.io/f/your-id" method="POST"> <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="e.g., Mariel de Pena" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="viber">Contact Number / Viber</label>
-                    <input type="tel" id="viber" name="viber" placeholder="e.g., 0917XXXXXXX" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="date">Wedding Date</label>
-                    <input type="date" id="date" name="wedding_date" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="package">Package Availing</label>
-                    <select id="package" name="package_chosen">
-                        <option value="Lite Package" selected>The Lite Package — ₱1,800</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="submit-btn">Check Availability & Book Slot</button>
-            </form>
-        </section>
-
-    </main>
-
-</body>
-</html>
+        <div class="price-tag">₱1
