@@ -28,6 +28,72 @@ body.locked {
     height: 100vh !important;
     touch-action: none !important; 
 }
+/* --- FAQ SECTION --- */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--card-bg); 
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #d4a5a5; 
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.4s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), padding 0.4s ease;
+        }
+
+        .faq-answer p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.7;
+            padding-bottom: 24px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg); 
+            color: #d4a5a5;
+        }
 /* --- 3D LITERAL SCROLL SECTION --- */
 /* THIS IS THE MISSING RULE THAT MAKES IT WHITE! */
 .pricing-section { 
@@ -980,7 +1046,53 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
         </div>
     </section>
 
+<section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How early should we book our slot?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We recommend booking 3 to 6 months before your wedding date. Because we provide high-touch service and custom configurations (especially for our Premium and Concierge tiers), we strictly limit the number of slots we accept per month to ensure absolute quality.</p>
+                    </div>
+                </div>
 
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What details do I need to provide to lock in my booking slot?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>To reserve your slot, you only need to submit our basic inquiry form with your Name, Wedding Date, Viber Number, and desired Package. We will review availability first. Once confirmed and secured via Viber, we will then guide you on gathering your timeline, photos, and guest list during onboarding.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What is the difference between Premium Tech and the Concierge package?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>With Premium Tech, we build your fully secure, anti-gatecrasher RSVP website and hand you the automated dashboard to view live trackings. With the Concierge package, you are completely hands-off—I personally act as your digital guest list manager, handling all entourage changes, sending you weekly summary reports, and compiling your final headcount for the caterer.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can we upgrade our package later on?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! You can upgrade your tier (e.g., from Essential to Premium Tech, or adding Concierge management) at any point during your onboarding phase, provided there is still custom configuration time available in your wedding month.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
@@ -1103,6 +1215,30 @@ const startIntroTransition = () => {
         }, { threshold: 0.2 }); // Triggers when 20% of the section is visible
 
         scrolls.forEach(scroll => scrollObserver.observe(scroll));
+
+    // --- FAQ CLICK REVEAL ---
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const answer = item.querySelector('.faq-answer');
+
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').style.maxHeight = '0';
+                    }
+                });
+
+                item.classList.toggle('active');
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                } else {
+                    answer.style.maxHeight = '0';
+                }
+            });
+        });
     
     });
 </script>
