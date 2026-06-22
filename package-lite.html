@@ -309,6 +309,36 @@
         </section>
 
     </main>
+<script>
+        const form = document.querySelector('form');
+        const submitBtn = document.querySelector('.submit-btn');
 
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // STOPS the page from going to the ugly Google link!
+            
+            // Change button to look like it's loading
+            submitBtn.innerText = "Securing Slot...";
+            submitBtn.style.backgroundColor = "#d4a5a5";
+            submitBtn.style.cursor = "wait";
+            submitBtn.disabled = true;
+
+            const scriptURL = form.getAttribute('action');
+            const formData = new FormData(form);
+
+            // Secretly sends data to Google in the background
+            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+                .then(() => {
+                    // Cleanly redirects the user back to your beautiful homepage!
+                    window.location.href = 'index.html'; 
+                })
+                .catch(error => {
+                    alert("Something went wrong. Please try again.");
+                    submitBtn.innerText = "Check Availability & Book Slot";
+                    submitBtn.style.backgroundColor = "var(--text-dark)";
+                    submitBtn.style.cursor = "pointer";
+                    submitBtn.disabled = false;
+                });
+        });
+    </script>
 </body>
 </html>
