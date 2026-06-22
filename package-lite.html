@@ -26,14 +26,12 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Global Navigation Header --- */
+/* --- Global Navigation Header --- */
         .main-nav {
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: relative; /* Changed from absolute to prevent layout overlapping */
             width: 100%;
-            padding: 30px 40px;
-            z-index: 10;
+            padding: 30px 40px 10px 40px; /* Snug top spacing */
+            background-color: var(--bg); /* Blends into the header color band */
         }
 
         .logo-wrap {
@@ -50,11 +48,10 @@
         /* --- Elegant Hero Header --- */
         .order-header {
             text-align: center;
-            padding: 140px 24px 50px; 
+            padding: 20px 24px 50px; /* Dropped from 140px to a crisp 20px! */
             background-color: var(--bg); 
             border-bottom: 1px solid var(--border);
         }
-
         .order-header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
