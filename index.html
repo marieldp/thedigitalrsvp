@@ -1103,6 +1103,10 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
     </footer>
     
 <script>
+    // 1. CLEAR THE "#packages" HASH & FORCE THE TOP LOCK IMMEDIATELY
+    if (window.location.hash) {
+        history.replaceState("", document.title, window.location.pathname + window.location.search);
+    }
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
@@ -1114,6 +1118,16 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
         const realLogo = document.querySelector('.logo-wrap'); 
         const heroVideo = document.getElementById('hero-video');
         const btnWrap = document.getElementById('hero-btn-wrap');
+
+        // --- NAVBAR SCROLL STATE CHANGE TRIGGER ---
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
 
         const shatterLetters = (id) => {
             const el = document.getElementById(id);
@@ -1133,7 +1147,7 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
         shatterWords('animate-words-title');
         shatterWords('animate-words-p');
 
-const startIntroTransition = () => {
+        const startIntroTransition = () => {
             if (introVideo) introVideo.src = "logo.png"; 
             if (introVideo) introVideo.classList.add('shrink');
             if (overlay) overlay.classList.add('fade-out');
@@ -1184,8 +1198,6 @@ const startIntroTransition = () => {
                 if (btnWrap) btnWrap.style.opacity = '1';
                 document.body.classList.remove('locked');
             }, animationFinishTime);
-
-      
         };
 
         // ==========================================
@@ -1196,27 +1208,25 @@ const startIntroTransition = () => {
         setTimeout(startIntroTransition, 4000); 
 
         // 2. Start Text Animation at 4.5 seconds 
-        // (Exactly 1 second before the 1.5s logo journey finishes at 5.5s!)
         setTimeout(animateEverything, 4500); 
 
 
-    // --- LITERAL SCROLL ANIMATION TRIGGER ---
+        // --- LITERAL SCROLL ANIMATION TRIGGER ---
         const scrolls = document.querySelectorAll('.scroll-wrapper');
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    // Staggers the unrolling so they open one after another
                     setTimeout(() => {
                         entry.target.classList.add('open');
                     }, index * 200); 
-                    scrollObserver.unobserve(entry.target); // Only animates once
+                    scrollObserver.unobserve(entry.target); 
                 }
             });
-        }, { threshold: 0.2 }); // Triggers when 20% of the section is visible
+        }, { threshold: 0.2 }); 
 
         scrolls.forEach(scroll => scrollObserver.observe(scroll));
 
-    // --- FAQ CLICK REVEAL ---
+        // --- FAQ CLICK REVEAL ---
         const faqQuestions = document.querySelectorAll('.faq-question');
 
         faqQuestions.forEach(question => {
@@ -1239,7 +1249,7 @@ const startIntroTransition = () => {
                 }
             });
         });
-    
+        
     });
 </script>
 </body>
