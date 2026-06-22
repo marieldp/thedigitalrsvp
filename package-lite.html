@@ -321,9 +321,13 @@
 <script>
         const form = document.querySelector('form');
         const submitBtn = document.querySelector('.submit-btn');
+        const formTitle = document.getElementById('form-title');
+        const successScreen = document.getElementById('success-screen');
+        const submitAnotherBtn = document.getElementById('submit-another-btn');
 
+        // 1. Handle the Form Submission
         form.addEventListener('submit', (e) => {
-            e.preventDefault(); // STOPS the page from going to the ugly Google link!
+            e.preventDefault(); 
             
             // Change button to look like it's loading
             submitBtn.innerText = "Securing Slot...";
@@ -334,11 +338,23 @@
             const scriptURL = form.getAttribute('action');
             const formData = new FormData(form);
 
-            // Secretly sends data to Google in the background
             fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
                 .then(() => {
-                    // Cleanly redirects the user back to your beautiful homepage!
-                    window.location.href = 'index.html'; 
+                    // Instantly reset the text boxes in the background
+                    form.reset();
+
+                    // Hide the form and the title
+                    form.style.display = 'none';
+                    formTitle.style.display = 'none';
+
+                    // Show the beautiful success screen
+                    successScreen.style.display = 'block';
+
+                    // Reset the main submit button back to normal for later
+                    submitBtn.innerText = "Check Availability & Book Slot";
+                    submitBtn.style.backgroundColor = "var(--text-dark)";
+                    submitBtn.style.cursor = "pointer";
+                    submitBtn.disabled = false;
                 })
                 .catch(error => {
                     alert("Something went wrong. Please try again.");
@@ -347,6 +363,16 @@
                     submitBtn.style.cursor = "pointer";
                     submitBtn.disabled = false;
                 });
+        });
+
+        // 2. Handle the "Submit Another Request" Click
+        submitAnotherBtn.addEventListener('click', () => {
+            // Hide the success screen
+            successScreen.style.display = 'none';
+            
+            // Reveal the fresh, empty form and title again
+            formTitle.style.display = 'block';
+            form.style.display = 'block';
         });
     </script>
 </body>
