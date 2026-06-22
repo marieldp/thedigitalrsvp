@@ -320,16 +320,16 @@
     </main>
 <script>
         const form = document.querySelector('form');
-        const submitBtn = document.querySelector('.submit-btn');
+        const submitBtn = document.querySelector('.submit-btn'); // The original button
         const formTitle = document.getElementById('form-title');
         const successScreen = document.getElementById('success-screen');
-        const submitAnotherBtn = document.getElementById('submit-another-btn');
+        const submitAnotherBtn = document.getElementById('submit-another-btn'); // The success screen button
 
         // 1. Handle the Form Submission
         form.addEventListener('submit', (e) => {
             e.preventDefault(); 
             
-            // Change button to look like it's loading
+            // Lock the button and show the loading state
             submitBtn.innerText = "Securing Slot...";
             submitBtn.style.backgroundColor = "#d4a5a5";
             submitBtn.style.cursor = "wait";
@@ -340,21 +340,17 @@
 
             fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
                 .then(() => {
-                    // Instantly reset the text boxes in the background
-                    form.reset();
+                    // Slight delay for a realistic loading feel
+                    setTimeout(() => {
+                        form.reset(); // Clear the text boxes
+                        
+                        // Hide the form (and the original submit button inside it)
+                        form.style.display = 'none';
+                        formTitle.style.display = 'none';
 
-                    // Hide the form and the title
-                    form.style.display = 'none';
-                    formTitle.style.display = 'none';
-
-                    // Show the beautiful success screen
-                    successScreen.style.display = 'block';
-
-                    // Reset the main submit button back to normal for later
-                    submitBtn.innerText = "Check Availability & Book Slot";
-                    submitBtn.style.backgroundColor = "var(--text-dark)";
-                    submitBtn.style.cursor = "pointer";
-                    submitBtn.disabled = false;
+                        // Show the success screen (which has the "Submit Another Request" button)
+                        successScreen.style.display = 'block';
+                    }, 1200); 
                 })
                 .catch(error => {
                     alert("Something went wrong. Please try again.");
@@ -370,9 +366,15 @@
             // Hide the success screen
             successScreen.style.display = 'none';
             
-            // Reveal the fresh, empty form and title again
+            // Reveal the fresh form again
             formTitle.style.display = 'block';
             form.style.display = 'block';
+
+            // NOW we reset the original button back to normal!
+            submitBtn.innerText = "Check Availability & Book Slot";
+            submitBtn.style.backgroundColor = "var(--text-dark)";
+            submitBtn.style.cursor = "pointer";
+            submitBtn.disabled = false;
         });
     </script>
 </body>
