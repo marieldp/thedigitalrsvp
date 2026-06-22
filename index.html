@@ -39,11 +39,12 @@ body.locked {
             margin-bottom: 60px; /* Gives nice breathing room before the scrolls */
             width: 100%;
         }      
-        .literal-scroll-grid { 
+.literal-scroll-grid { 
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
             gap: 30px; 
             align-items: flex-start; 
+            min-height: 650px; /* THE MAGIC FIX: Reserves the space before they unroll! */
         }
 
         .scroll-wrapper {
