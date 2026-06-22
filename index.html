@@ -37,30 +37,32 @@
             filter: drop-shadow(0px 15px 20px rgba(0,0,0,0.12)); 
         }
 
-/* 1. The Rollers (Sleek, Minimalist Charcoal) */
+/* 1. The Rollers (Thicker, Sleek Slate Gray) */
         .scroll-top, .scroll-bottom {
             width: 100%;
-            height: 10px;
-            background: #2a2a2a; /* Sleek dark gray */
-            border-radius: 6px;
+            height: 22px; 
+            /* Softened to a modern gray to match your primary palette */
+            background: linear-gradient(to bottom, #757575, #4A4A4A, #757575); 
+            border-radius: 8px;
             position: relative;
             z-index: 2;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
         }
 
-        /* 2. The End Knobs (Modernized) */
+        /* 2. The End Knobs (Slightly darker gray for depth) */
         .scroll-top::before, .scroll-top::after,
         .scroll-bottom::before, .scroll-bottom::after {
             content: '';
             position: absolute;
-            top: -2px;
-            width: 8px;
-            height: 14px;
-            background: #111;
-            border-radius: 2px;
+            top: -4px;
+            width: 12px;
+            height: 30px; 
+            background: #333333; /* Dark slate gray, not pure black */
+            border-radius: 3px;
+            box-shadow: inset 0 0 3px rgba(255,255,255,0.15), 2px 2px 4px rgba(0,0,0,0.3);
         }
-        .scroll-top::before, .scroll-bottom::before { left: -3px; }
-        .scroll-top::after, .scroll-bottom::after { right: -3px; }
+        .scroll-top::before, .scroll-bottom::before { left: -5px; }
+        .scroll-top::after, .scroll-bottom::after { right: -5px; }
 
         /* 3. The Unfurling Paper (Restored Warm Parchment) */
         .scroll-paper {
