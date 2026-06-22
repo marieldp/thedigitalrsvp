@@ -95,16 +95,16 @@ body.locked {
             color: #d4a5a5;
         }
 /* --- 3D LITERAL SCROLL SECTION --- */
-/* THIS IS THE MISSING RULE THAT MAKES IT WHITE! */
 .pricing-section { 
-    padding: 100px 0; 
+    padding: 20px 0 60px 0; /* Trimmed down to pull everything up */
     background-color: #ffffff; 
 }
 .pricing-section .section-title {
-            text-align: center;
-            margin-bottom: 60px; /* Gives nice breathing room before the scrolls */
-            width: 100%;
-        }      
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 15px; /* Squeezed closer to the scrolls */
+    width: 100%;
+}   
 .literal-scroll-grid { 
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
@@ -170,14 +170,13 @@ body.locked {
         }
 
         /* Typography inside the paper */
-        .scroll-content {
-            padding: 35px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
+.scroll-content {
+    padding: 20px 15px; /* Less empty space inside the paper */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
         .scroll-content h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #222; margin-bottom: 5px;}
         .scroll-content .price { font-size: 1.8rem; font-weight: 600; color: #111; margin-bottom: 5px; }
         .scroll-content .turnover { font-size: 0.75rem; color: #888; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;}
