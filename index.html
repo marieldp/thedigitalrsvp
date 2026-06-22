@@ -219,16 +219,17 @@ margin: 0 auto 20px auto;
 
 /* --- THE BUTTON --- */
 .design-btn {
-  display: inline-block;
-  background-color: #d4a5a5;
+  display: block;         /* Changed from inline-block */
+  width: max-content;     /* Keeps the button hugging the text inside it */
+  margin: 0 auto;         /* THE MAGIC: Centers it horizontally! */
+  background-color: #d4a5a5; 
   color: #fff;
-  padding: 16px 36px;
+  padding: 15px 35px;
   font-size: 1.1rem;
   font-family: 'Playfair Display', serif;
   text-decoration: none;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(212, 165, 165, 0.4);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .design-btn:hover {
