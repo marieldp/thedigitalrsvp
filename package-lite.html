@@ -50,7 +50,7 @@
         /* --- Elegant Hero Header --- */
         .order-header {
             text-align: center;
-            padding: 140px 24px 50px; /* Shifted down to give the upper-left logo room */
+            padding: 140px 24px 50px; 
             background-color: var(--bg); 
             border-bottom: 1px solid var(--border);
         }
@@ -69,7 +69,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- Split Layout Layout --- */
+        /* --- Split Layout --- */
         .order-container {
             max-width: 1100px;
             margin: 60px auto;
@@ -80,7 +80,7 @@
             align-items: flex-start;
         }
 
-        /* --- Left Side: Content Perks --- */
+        /* --- Left Side: Specs & Features --- */
         .package-summary h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
@@ -88,10 +88,20 @@
             margin-bottom: 15px;
         }
 
-        .package-summary p {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 30px;
+        .package-summary .intro-p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin: 25px 0 12px 0;
         }
 
         .inclusion-list {
@@ -99,11 +109,11 @@
         }
 
         .inclusion-list li {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #444;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             position: relative;
-            padding-left: 30px;
+            padding-left: 28px;
         }
 
         .inclusion-list li::before {
@@ -112,7 +122,33 @@
             left: 0;
             color: #d4a5a5;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .sample-box {
+            margin-top: 35px;
+            padding: 20px;
+            background-color: #fafaf8;
+            border-left: 3px solid #d4a5a5;
+            border-radius: 4px;
+        }
+
+        .sample-box p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .sample-link {
+            color: var(--text-dark);
+            font-weight: 500;
+            text-decoration: underline;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .sample-link:hover {
+            color: #d4a5a5;
         }
 
         /* --- Right Side: Form Block --- */
@@ -207,5 +243,71 @@
     </nav>
 
     <header class="order-header">
-        <h1>The "Lite" Experience</h1>
-        <div class="price-tag">₱1
+        <h1>The "Lite" Package</h1>
+        <div class="price-tag">₱1,500 | 1–2 Business Days Turnover</div>
+    </header>
+
+    <main class="order-container">
+        
+        <section class="package-summary">
+            <h2>Digital Invite Overview</h2>
+            <p class="intro-p">A beautiful, modern digital invitation. Perfect for couples who just need the essential details online with zero stress.</p>
+            
+            <div class="section-label">Core Specifications</div>
+            <ul class="inclusion-list">
+                <li><strong>Design Framework:</strong> Signature Template (Landing Page Setup)</li>
+                <li><strong>Hosting:</strong> Custom Subdomain structure (e.g., marieldp.com/yournames)</li>
+                <li><strong>Music:</strong> Embedded background track featuring a clean play/pause toggle system</li>
+                <li><strong>RSVP Style:</strong> Open RSVP (Guests manually log their details into a streamlined Google Form/Sheet framework)</li>
+                <li><strong>Details:</strong> Custom digital seal rendering your wedding initials</li>
+                <li><strong>Optimization:</strong> Full-tier Mobile Responsive formatting</li>
+            </ul>
+
+            <div class="section-label">Key Sections Included</div>
+            <ul class="inclusion-list">
+                <li>Landing Page Backdrop</li>
+                <li>Formal Editorial Invitation Text</li>
+                <li>Ceremony & Reception Logistics (Time, Date, Geo-location maps)</li>
+                <li>Entourage Registry (Seamlessly synced to edit via Google Sheets anytime)</li>
+            </ul>
+
+            <div class="sample-box">
+                <p>Want to see a real look at this design tier before securing your month?</p>
+                <a href="https://marieldp.github.io/lite-watercolor/couplename.html" target="_blank" class="sample-link">Explore the Live Sample Site →</a>
+            </div>
+        </section>
+
+        <section class="form-card">
+            <h3>Secure Your Slot</h3>
+            <form action="https://formspree.io/f/your-id" method="POST">
+                
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="e.g., Taylor Smith" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="viber">Contact Number / Viber</label>
+                    <input type="tel" id="viber" name="viber" placeholder="e.g., 0917XXXXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Wedding Date</label>
+                    <input type="date" id="date" name="wedding_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="package">Package Availing</label>
+                    <select id="package" name="package_chosen">
+                        <option value="Lite Package" selected>The Lite Package — ₱1,500</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Check Availability & Book Slot</button>
+            </form>
+        </section>
+
+    </main>
+
+</body>
+</html>
