@@ -16,6 +16,76 @@
             --border: #ece4db;      
             --gray: #9E9E9E;        
         }
+/* --- LITERAL SCROLL SECTION --- */
+        .pricing-section { padding: 100px 0; }
+        
+        .literal-scroll-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 25px; 
+            align-items: flex-start; /* Keeps them aligned at the top */
+        }
+
+        .scroll-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            /* Creates a 3D shadow under the whole scroll */
+            filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.1)); 
+        }
+
+        /* The Wooden Rollers */
+        .scroll-top, .scroll-bottom {
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to bottom, #8b5a2b, #d2b48c, #8b5a2b); /* Wood texture */
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* The Parchment Paper */
+        .scroll-paper {
+            width: 90%; /* Slightly narrower than the wood rollers */
+            background-color: #fdf6e3; /* Warm parchment color */
+            /* This is the magic for the animation - it starts closed (0 height) */
+            max-height: 0; 
+            overflow: hidden;
+            transition: max-height 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* When JS adds the 'open' class, the paper unrolls to full size */
+        .scroll-wrapper.open .scroll-paper {
+            max-height: 500px; /* High enough to fit your text */
+        }
+
+        /* The Text inside the paper */
+        .scroll-content {
+            padding: 30px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* Typography adjustments for the scroll */
+        .scroll-content h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #333; margin-bottom: 5px;}
+        .scroll-content .price { font-size: 1.8rem; font-weight: 600; color: #111; margin-bottom: 5px; }
+        .scroll-content .turnover { font-size: 0.8rem; color: #777; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;}
+        .scroll-content .desc { font-size: 0.95rem; color: #555; line-height: 1.5; margin-bottom: 25px; flex-grow: 1;}
+        .scroll-content .badge { color: #d4a5a5; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; margin-bottom: 5px;}
+        
+        .scroll-content .btn { background-color: #4A4A4A; color: #fff; padding: 12px 20px; border-radius: 4px; text-decoration: none; font-size: 0.9rem; transition: background 0.3s;}
+        .scroll-content .btn:hover { background-color: #d4a5a5; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .literal-scroll-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        }
+        @media (max-width: 768px) {
+            .literal-scroll-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
 /* Kills the double-spacing from the paragraph inside the header */
 .showcase-header .package-description {
   margin-bottom: 0; 
@@ -632,7 +702,6 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
             .hero h1 { font-size: 2.8rem; }
             .featured-grid { grid-template-columns: 1fr; gap: 40px; }
             .featured-image { height: 350px; }
-            .pricing-grid { grid-template-columns: 1fr; }
         }
 
   
@@ -647,25 +716,7 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
         .featured-list li { font-size: 1rem; margin-bottom: 15px; padding-left: 30px; position: relative; }
         .featured-list li::before { content: "—"; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
 
-        /* --- Pricing Section --- */
-        .pricing-section { padding: 100px 0; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; font-weight: 600; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; align-items: stretch; }
-        .pricing-card { background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border); display: flex; flex-direction: column; position: relative; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .pricing-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-        .pricing-card.highlight { border: 2px solid var(--primary); box-shadow: 0 8px 20px rgba(0,0,0,0.03); }
-        .badge { background: var(--primary); color: white; padding: 4px 12px; position: absolute; top: -12px; right: 20px; font-size: 0.75rem; border-radius: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .pricing-card h3 { font-size: 1.4rem; margin-bottom: 5px; font-weight: 600; font-family: 'Inter', sans-serif; }
-        .price { font-size: 2rem; font-weight: 600; margin-bottom: 5px; }
-        .turnover { font-size: 0.85rem; color: var(--gray); display: block; margin-bottom: 15px; font-weight: 500; }
-        .desc { font-size: 0.9rem; margin-bottom: 25px; color: var(--gray); }
-        .pricing-card ul { list-style: none; margin-bottom: 30px; font-size: 0.9rem; flex-grow: 1; }
-        .pricing-card ul li { margin-bottom: 12px; padding-left: 24px; position: relative; color: var(--primary); }
-        .pricing-card ul li::before { content: "✓"; position: absolute; left: 0; font-weight: bold; }
-        .btn { display: block; text-align: center; background-color: var(--primary); color: white; padding: 14px 20px; text-decoration: none; border-radius: 6px; font-weight: 500; margin-top: auto; transition: background 0.3s; }
-        .btn:hover { background-color: var(--accent); color: var(--primary); }
-        .btn-outline { background-color: transparent; color: var(--primary); border: 1px solid var(--primary); }
-        .btn-outline:hover { background-color: var(--primary); color: white; }
+
 
         /* --- Testimonial Section --- */
         .testimonials { padding: 100px 0; background-color: var(--bg); text-align: center; border-top: 1px solid var(--border); }
@@ -821,70 +872,69 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
         </div>
     </section>
 
-   <section id="packages" class="pricing-section">
+<section id="packages" class="pricing-section">
         <div class="container">
-            <h2 class="section-title">Packages for The Digital RSVP</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>The "Lite"</h3>
-                    <div class="price">₱1,800</div>
-                    <span class="turnover">1–2 Business Days</span>
-                    <p class="desc">A beautiful, modern digital invitation for essential details.</p>
-                    <ul>
-                        <li>Signature Landing Page Template</li>
-                        <li>Custom Subdomain</li>
-                        <li>Background Music Embedded</li>
-                        <li>Open RSVP via Google Form</li>
-                        <li>Easily edit Entourage via GSheet</li>
-                    </ul>
-                    <a href="booking-lite.html" class="btn btn-outline">Avail Now</a>
+            <h2 class="section-title">Select Your Experience</h2>
+            
+            <div class="literal-scroll-grid">
+                
+                <div class="scroll-wrapper">
+                    <div class="scroll-top"></div>
+                    <div class="scroll-paper">
+                        <div class="scroll-content">
+                            <h3>The "Lite"</h3>
+                            <div class="price">₱1,800</div>
+                            <span class="turnover">1–2 Business Days</span>
+                            <p class="desc">A beautiful, modern digital invitation for your essential details.</p>
+                            <a href="package-lite.html" target="_blank" class="btn">See Details</a>
+                        </div>
+                    </div>
+                    <div class="scroll-bottom"></div>
                 </div>
 
-                <div class="pricing-card">
-                    <h3>The "Essential"</h3>
-                    <div class="price">₱3,500</div>
-                    <span class="turnover">3–5 Business Days</span>
-                    <p class="desc">Elevate your invitations. Seamless, stylish, and smart.</p>
-                    <ul>
-                        <li>Signature Editorial Template</li>
-                        <li>Smart RSVP (GSheet Database)</li>
-                        <li>Google Maps / Waze Integration</li>
-                        <li>Photo Gallery Slideshow</li>
-                        <li>Digital Gift Registry Integration</li>
-                    </ul>
-                    <a href="booking-essential.html" class="btn btn-outline">Avail Now</a>
+                <div class="scroll-wrapper">
+                    <div class="scroll-top"></div>
+                    <div class="scroll-paper">
+                        <div class="scroll-content">
+                            <h3>The "Essential"</h3>
+                            <div class="price">₱3,500</div>
+                            <span class="turnover">3–5 Business Days</span>
+                            <p class="desc">Elevate your invitations. Seamless, stylish, and smart.</p>
+                            <a href="package-essential.html" target="_blank" class="btn">See Details</a>
+                        </div>
+                    </div>
+                    <div class="scroll-bottom"></div>
                 </div>
 
-                <div class="pricing-card highlight">
-                    <div class="badge">Highly Recommended</div>
-                    <h3>Premium Tech</h3>
-                    <div class="price">₱5,500</div>
-                    <span class="turnover">7-10 Business Days</span>
-                    <p class="desc">For modern couples who want full security and automated tracking.</p>
-                    <ul>
-                        <li><strong>Custom .com domain (1 yr)</strong></li>
-                        <li>Guest-Specific Access Links</li>
-                        <li>Anti-Gatecrasher (Fixed Seats)</li>
-                        <li>Automated "Thank You" Emails</li>
-                        <li>RSVP Deadline Form Lock</li>
-                    </ul>
-                    <a href="booking-premium.html" class="btn">Avail Now</a>
+                <div class="scroll-wrapper">
+                    <div class="scroll-top"></div>
+                    <div class="scroll-paper">
+                        <div class="scroll-content">
+                            <div class="badge">Highly Recommended</div>
+                            <h3>Premium Tech</h3>
+                            <div class="price">₱5,500</div>
+                            <span class="turnover">7-10 Business Days</span>
+                            <p class="desc">For modern couples who want full security and automated tracking.</p>
+                            <a href="package-premium.html" target="_blank" class="btn">See Details</a>
+                        </div>
+                    </div>
+                    <div class="scroll-bottom"></div>
                 </div>
 
-                <div class="pricing-card">
-                    <h3>Concierge</h3>
-                    <div class="price">₱8,500+</div>
-                    <span class="turnover">Custom Timeline</span>
-                    <p class="desc">For busy couples who want a dedicated digital manager.</p>
-                    <ul>
-                        <li>Everything in Premium Tech</li>
-                        <li>Continuous Database Management</li>
-                        <li>Weekly RSVP Reports via PDF/Email</li>
-                        <li>Final Headcount Turnover Report</li>
-                        <li>Priority Support Direct Line</li>
-                    </ul>
-                    <a href="booking-concierge.html" class="btn btn-outline">Avail Now</a>
+                <div class="scroll-wrapper">
+                    <div class="scroll-top"></div>
+                    <div class="scroll-paper">
+                        <div class="scroll-content">
+                            <h3>Concierge</h3>
+                            <div class="price">₱8,500+</div>
+                            <span class="turnover">Custom Timeline</span>
+                            <p class="desc">For busy couples who want a dedicated digital manager.</p>
+                            <a href="package-concierge.html" target="_blank" class="btn">See Details</a>
+                        </div>
+                    </div>
+                    <div class="scroll-bottom"></div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1005,6 +1055,23 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
         // (Exactly 1 second before the 1.5s logo journey finishes at 5.5s!)
         setTimeout(animateEverything, 4500); 
 
+
+    // --- LITERAL SCROLL ANIMATION TRIGGER ---
+        const scrolls = document.querySelectorAll('.scroll-wrapper');
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Staggers the unrolling so they open one after another
+                    setTimeout(() => {
+                        entry.target.classList.add('open');
+                    }, index * 200); 
+                    scrollObserver.unobserve(entry.target); // Only animates once
+                }
+            });
+        }, { threshold: 0.2 }); // Triggers when 20% of the section is visible
+
+        scrolls.forEach(scroll => scrollObserver.observe(scroll));
+    
     });
 </script>
 </body>
