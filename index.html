@@ -1018,7 +1018,7 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
         shatterWords('animate-words-title');
         shatterWords('animate-words-p');
 
-        const startIntroTransition = () => {
+const startIntroTransition = () => {
             if (introVideo) introVideo.src = "logo.png"; 
             if (introVideo) introVideo.classList.add('shrink');
             if (overlay) overlay.classList.add('fade-out');
@@ -1030,6 +1030,10 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
             setTimeout(() => {
                 if (overlay) overlay.style.display = 'none'; 
                 if (realLogo) realLogo.classList.add('reveal'); 
+                
+                /* THE NEW UNLOCK SPOT: Frees the user exactly when the video reveals! */
+                document.body.classList.remove('locked'); 
+                
             }, 1500); 
         };
 
@@ -1066,13 +1070,7 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
                 document.body.classList.remove('locked');
             }, animationFinishTime);
 
-            // Wait 5 seconds after animation finishes, then scroll down
-            setTimeout(() => {
-                const featuredSection = document.getElementById('featured');
-                if (featuredSection) {
-                    featuredSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, animationFinishTime + 3000); 
+      
         };
 
         // ==========================================
