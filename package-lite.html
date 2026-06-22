@@ -320,8 +320,8 @@
     </main>
 <script>
         const form = document.querySelector('form');
-        const submitBtn = document.querySelector('.submit-btn'); // The original button
-        const formTitle = document.getElementById('form-title');
+const submitBtn = form.querySelector('button[type="submit"]');
+    const formTitle = document.getElementById('form-title');
         const successScreen = document.getElementById('success-screen');
         const submitAnotherBtn = document.getElementById('submit-another-btn'); // The success screen button
 
