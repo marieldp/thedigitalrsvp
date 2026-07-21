@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Designs | The Digital RSVP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+        :root {
+            --primary: #4A4A4A;      
+            --accent: #fec89a;       
+            --bg: #FCD5CE;           
+            --card-bg: #FFFFFF;
+            --border: #ece4db;      
+            --text-dark: #222222;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Global Navigation Header --- */
+        .main-nav {
+            position: absolute; 
+            top: 20px;          
+            left: 40px;         
+            z-index: 10;
+        }
+
+        .logo-wrap {
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        /* --- Elegant Hero Header --- */
+        .gallery-header {
+            text-align: center;
+            padding: 120px 24px 60px; 
+            background-color: var(--bg); 
+            border-bottom: 1px solid var(--border);
+        }
+
+        .gallery-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .gallery-header p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- The Grid Layout --- */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 50px;
+        }
+
+        /* --- Individual Design Cards --- */
+        .design-card {
+            background-color: #fafaf8;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .design-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Image Placeholder / Thumbnail */
+        .design-img-wrap {
+            width: 100%;
+            height: 400px;
+            background-color: #f0ede6; /* Soft placeholder color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .design-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .design-card:hover .design-img-wrap img {
+            transform: scale(1.03);
+        }
+
+        .design-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .design-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .design-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .preview-btn {
+            display: inline-block;
+            background-color: var(--text-dark);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 24px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .preview-btn:hover {
+            background-color: #d4a5a5;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 850px) {
+            .main-nav { padding: 20px; }
+            .gallery-header { padding: 100px 24px 50px; }
+            .gallery-header h1 { font-size: 2.2rem; }
+            .gallery-container { margin: 50px auto; gap: 40px; }
+            .design-img-wrap { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BRAND LOGO UPPER LEFT -->
+    <nav class="main-nav">
+        <a href="index.html" class="logo-wrap">
+            <img src="logo.png" alt="TDR Logo" class="nav-logo-img">
+        </a>
+    </nav>
+
+    <!-- Header Block -->
+    <header class="gallery-header">
+        <h1>The Design Collection</h1>
+        <p>Explore our curated aesthetic frameworks. Once you book your slot, we will tailor your chosen framework to match your exact wedding palette.</p>
+    </header>
+
+    <!-- The Gallery Grid -->
+    <main class="gallery-container">
+        
+        <!-- DESIGN 1: The Classic Watercolor (Your existing one!) -->
+        <article class="design-card">
+            <div class="design-img-wrap">
+                <!-- Replace 'watercolor-thumb.jpg' with a screenshot of your actual site -->
+                <img src="watercolor-thumb.jpg" alt="Classic Watercolor Design" onerror="this.style.display='none'">
+                <!-- The text below only shows if the image is missing/broken -->
+                <span style="position: absolute; color: #999; font-size: 0.9rem;">Image Placeholder</span>
+            </div>
+            <div class="design-info">
+                <h2 class="design-title">The Classic Watercolor</h2>
+                <p class="design-desc">Soft, romantic, and timeless. Features delicate floral accents and elegant serif typography.</p>
+                <!-- Put your actual sample link here! -->
+                <a href="YOUR-SAMPLE-LINK-HERE.html" target="_blank" class="preview-btn">Preview Live Site</a>
+            </div>
+        </article>
+
+        <!-- DESIGN 2: The Modern Minimalist (Placeholder for your next design!) -->
+        <article class="design-card">
+            <div class="design-img-wrap">
+                <img src="minimalist-thumb.jpg" alt="Modern Minimalist Design" onerror="this.style.display='none'">
+                <span style="position: absolute; color: #999; font-size: 0.9rem;">Coming Soon</span>
+            </div>
+            <div class="design-info">
+                <h2 class="design-title">The Modern Minimalist</h2>
+                <p class="design-desc">Clean lines, massive white space, and striking editorial typography. Quiet luxury at its finest.</p>
+                <!-- Keep this as # until you build it -->
+                <a href="#" class="preview-btn">Preview Live Site</a>
+            </div>
+        </article>
+
+        <!-- DESIGN 3: The Dark & Moody (Placeholder) -->
+        <article class="design-card">
+            <div class="design-img-wrap">
+                <img src="moody-thumb.jpg" alt="Dark and Moody Design" onerror="this.style.display='none'">
+                <span style="position: absolute; color: #999; font-size: 0.9rem;">Coming Soon</span>
+            </div>
+            <div class="design-info">
+                <h2 class="design-title">The Midnight Editorial</h2>
+                <p class="design-desc">Dramatic, intimate, and luxurious. Perfect for evening affairs and black-tie dress codes.</p>
+                <a href="#" class="preview-btn">Preview Live Site</a>
+            </div>
+        </article>
+
+    </main>
+
+</body>
+</html>
