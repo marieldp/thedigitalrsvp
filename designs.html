@@ -123,11 +123,11 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        /* Video / Thumbnail Wrapper */
+/* Video / Thumbnail Wrapper */
         .design-img-wrap {
             width: 100%;
             height: 480px; 
-            background-color: #f0ede6; 
+            background-color: #ffffff; /* Changed to white to seamlessly blend with your video */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -139,51 +139,14 @@
         .design-img-wrap video {
             width: 100%;
             height: 100%;
-            object-fit: contain; 
-            padding: 30px; 
+            object-fit: cover; /* This forces the video to fill the entire container edge-to-edge */
+            padding: 0; /* Removed the 30px gap */
             transition: transform 0.5s ease;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
         }
 
         .design-card:hover .design-img-wrap img,
         .design-card:hover .design-img-wrap video {
             transform: scale(1.05); 
-        }
-
-        .design-info {
-            padding: 25px;
-            text-align: center;
-        }
-
-        .design-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-        }
-
-        .design-desc {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .preview-btn {
-            display: inline-block;
-            background-color: var(--text-dark);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 24px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .preview-btn:hover {
-            background-color: #d4a5a5;
         }
 
         /* --- Horizontal Divider --- */
