@@ -6,6 +6,7 @@
     <title>Available Designs | The Digital RSVP</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
 
         :root {
             --primary: #4A4A4A;      
@@ -17,6 +18,17 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+        .cursive-highlight {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8em; /* Makes it significantly bigger than the rest of the text */
+            font-weight: 400;
+            color: #d4a5a5; /* A soft blush/rose accent color */
+            padding: 0 8px;
+            text-transform: none;
+            vertical-align: middle;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -205,7 +217,7 @@
 
     <!-- Header Block -->
     <header class="gallery-header">
-        <h1>The Design Collection</h1>
+    <h1>The <span class="cursive-highlight">Design</span> Collection</h1>
         <p>Explore our curated aesthetic frameworks. Compare our package tiers below to find the perfect level of detail for your celebration.</p>
     </header>
 
