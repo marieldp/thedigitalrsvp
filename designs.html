@@ -67,10 +67,30 @@
             margin: 0 auto;
         }
 
+        /* --- Package Tier Headers --- */
+        .tier-header {
+            text-align: center;
+            margin: 80px 24px 40px;
+        }
+        
+        .tier-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .tier-header p {
+            font-size: 1rem;
+            color: #666;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
         /* --- The Grid Layout --- */
         .gallery-container {
             max-width: 1200px;
-            margin: 80px auto;
+            margin: 0 auto 60px; /* Reduced top margin to hug the tier headers */
             padding: 0 24px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -91,11 +111,11 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        /* Image Placeholder / Thumbnail */
+        /* Video / Thumbnail Wrapper */
         .design-img-wrap {
             width: 100%;
-            height: 400px;
-            background-color: #f0ede6; /* Soft placeholder color */
+            height: 480px; 
+            background-color: #f0ede6; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -103,15 +123,19 @@
             position: relative;
         }
 
-        .design-img-wrap img {
+        .design-img-wrap img, 
+        .design-img-wrap video {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; 
+            padding: 30px; 
             transition: transform 0.5s ease;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
         }
 
-        .design-card:hover .design-img-wrap img {
-            transform: scale(1.03);
+        .design-card:hover .design-img-wrap img,
+        .design-card:hover .design-img-wrap video {
+            transform: scale(1.05); 
         }
 
         .design-info {
@@ -150,13 +174,23 @@
             background-color: #d4a5a5;
         }
 
+        /* --- Horizontal Divider --- */
+        .tier-divider {
+            max-width: 150px;
+            margin: 0 auto;
+            border: 0;
+            border-top: 1px solid #d4a5a5;
+            opacity: 0.5;
+        }
+
         /* --- Mobile Responsiveness --- */
         @media (max-width: 850px) {
             .main-nav { padding: 20px; }
             .gallery-header { padding: 100px 24px 50px; }
             .gallery-header h1 { font-size: 2.2rem; }
-            .gallery-container { margin: 50px auto; gap: 40px; }
-            .design-img-wrap { height: 350px; }
+            .tier-header h2 { font-size: 1.8rem; }
+            .gallery-container { gap: 40px; }
+            .design-img-wrap { height: 400px; }
         }
     </style>
 </head>
@@ -172,56 +206,101 @@
     <!-- Header Block -->
     <header class="gallery-header">
         <h1>The Design Collection</h1>
-        <p>Explore our curated aesthetic frameworks. Once you book your slot, we will tailor your chosen framework to match your exact wedding palette.</p>
+        <p>Explore our curated aesthetic frameworks. Compare our package tiers below to find the perfect level of detail for your celebration.</p>
     </header>
 
-    <!-- The Gallery Grid -->
-    <main class="gallery-container">
+    <!-- ==============================================
+         TIER 1: PREMIUM / CONCIERGE (Show your best first!)
+         ============================================== -->
+    <section>
+        <div class="tier-header">
+            <h2>Premium & Concierge Tiers</h2>
+            <p>Our most robust layout featuring full digital guestbooks, custom domains, and uncompromising detail.</p>
+        </div>
         
-        <!-- DESIGN 1: The Classic Watercolor (Your existing one!) -->
-        <article class="design-card">
-            <div class="design-img-wrap">
-                <!-- ik 'watercolor-thumb.jpg' with a screenshot of your actual site -->
-                <video src="sunsetflorals.mp4" autoplay loop muted playsinline></video>               
-                <!-- The text below only shows if the image is missing/broken -->
-                <span style="position: absolute; color: #999; font-size: 0.9rem;">Image Placeholder</span>
-            </div>
-            <div class="design-info">
-                <h2 class="design-title">The Sunset Florals</h2>
-                <p class="design-desc">Soft, romantic, and timeless. Features delicate floral accents and elegant serif typography.</p>
-                <!-- Put your actual sample link here! -->
-                <a href="https://marieldp.github.io/lite-sunsetflorals/index.html" target="_blank" class="preview-btn">Preview Live Site</a>
-            </div>
-        </article>
+        <main class="gallery-container">
+            <!-- Premium Design 1 -->
+            <article class="design-card">
+                <div class="design-img-wrap">
+                    <!-- USING MP4 VIDEO HERE -->
+                    <video src="premium-watercolor.mp4" autoplay loop muted playsinline onerror="this.style.display='none'"></video>
+                    <span style="position: absolute; color: #999; font-size: 0.9rem; z-index: -1;">Video Placeholder</span>
+                </div>
+                <div class="design-info">
+                    <h2 class="design-title">The Classic Watercolor</h2>
+                    <p class="design-desc">Soft, romantic, and timeless. Features delicate floral accents and elegant serif typography.</p>
+                    <a href="YOUR-PREMIUM-LINK-HERE.html" target="_blank" class="preview-btn">Preview Live Site</a>
+                </div>
+            </article>
 
-        <!-- DESIGN 2: The Modern Minimalist (Placeholder for your next design!) -->
-        <article class="design-card">
-            <div class="design-img-wrap">
-                <img src="minimalist-thumb.jpg" alt="Modern Minimalist Design" onerror="this.style.display='none'">
-                <span style="position: absolute; color: #999; font-size: 0.9rem;">Coming Soon</span>
-            </div>
-            <div class="design-info">
-                <h2 class="design-title">The Modern Minimalist</h2>
-                <p class="design-desc">Clean lines, massive white space, and striking editorial typography. Quiet luxury at its finest.</p>
-                <!-- Keep this as # until you build it -->
-                <a href="#" class="preview-btn">Preview Live Site</a>
-            </div>
-        </article>
+            <!-- Premium Design 2 (Placeholder) -->
+            <article class="design-card">
+                <div class="design-img-wrap">
+                    <video src="premium-minimalist.mp4" autoplay loop muted playsinline onerror="this.style.display='none'"></video>
+                    <span style="position: absolute; color: #999; font-size: 0.9rem; z-index: -1;">Coming Soon</span>
+                </div>
+                <div class="design-info">
+                    <h2 class="design-title">The Modern Minimalist</h2>
+                    <p class="design-desc">Clean lines, massive white space, and striking editorial typography.</p>
+                    <a href="#" class="preview-btn">Preview Live Site</a>
+                </div>
+            </article>
+        </main>
+    </section>
 
-        <!-- DESIGN 3: The Dark & Moody (Placeholder) -->
-        <article class="design-card">
-            <div class="design-img-wrap">
-                <img src="moody-thumb.jpg" alt="Dark and Moody Design" onerror="this.style.display='none'">
-                <span style="position: absolute; color: #999; font-size: 0.9rem;">Coming Soon</span>
-            </div>
-            <div class="design-info">
-                <h2 class="design-title">The Midnight Editorial</h2>
-                <p class="design-desc">Dramatic, intimate, and luxurious. Perfect for evening affairs and black-tie dress codes.</p>
-                <a href="#" class="preview-btn">Preview Live Site</a>
-            </div>
-        </article>
+    <hr class="tier-divider">
 
-    </main>
+    <!-- ==============================================
+         TIER 2: ESSENTIAL PACKAGE
+         ============================================== -->
+    <section>
+        <div class="tier-header">
+            <h2>The Essential Tier</h2>
+            <p>A fully-featured editorial experience including countdowns, registries, and smart RSVP routing.</p>
+        </div>
+        
+        <main class="gallery-container">
+            <!-- Essential Design 1 -->
+            <article class="design-card">
+                <div class="design-img-wrap">
+                    <video src="essential-watercolor.mp4" autoplay loop muted playsinline onerror="this.style.display='none'"></video>
+                    <span style="position: absolute; color: #999; font-size: 0.9rem; z-index: -1;">Video Placeholder</span>
+                </div>
+                <div class="design-info">
+                    <h2 class="design-title">The Classic Watercolor</h2>
+                    <p class="design-desc">The Essential layout featuring embedded music and interactive maps.</p>
+                    <a href="YOUR-ESSENTIAL-LINK-HERE.html" target="_blank" class="preview-btn">Preview Live Site</a>
+                </div>
+            </article>
+        </main>
+    </section>
+
+    <hr class="tier-divider">
+
+    <!-- ==============================================
+         TIER 3: LITE PACKAGE
+         ============================================== -->
+    <section>
+        <div class="tier-header">
+            <h2>The Lite Tier</h2>
+            <p>Beautiful, streamlined essentials for the modern couple looking for a quick and elegant digital presence.</p>
+        </div>
+        
+        <main class="gallery-container">
+            <!-- Lite Design 1 -->
+            <article class="design-card">
+                <div class="design-img-wrap">
+                    <video src="sunsetflorals.mp4" autoplay loop muted playsinline onerror="this.style.display='none'"></video>
+                    <span style="position: absolute; color: #999; font-size: 0.9rem; z-index: -1;">Video Placeholder</span>
+                </div>
+                <div class="design-info">
+                    <h2 class="design-title">The Sunset Florals</h2>
+                    <p class="design-desc">A gorgeous single-page invitation with an integrated Google Form RSVP.</p>
+                    <a href="YOUR-LITE-LINK-HERE.html" target="_blank" class="preview-btn">Preview Live Site</a>
+                </div>
+            </article>
+        </main>
+    </section>
 
 </body>
 </html>
