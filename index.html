@@ -185,34 +185,73 @@ body.locked {
             color: #1d1d1f;
         }
 
-    /* =========================================
-           MOBILE & TABLET FIX (2-Column Side-by-Side)
+/* =========================================
+           MOBILE & TABLET FIX (With Peek Effect)
            ========================================= */
+        /* Hide the swipe hint on desktop */
+        .swipe-hint {
+            display: none; 
+        }
+
         @media (max-width: 992px) {
+            /* Show and style the swipe hint on mobile */
+            .swipe-hint {
+                display: block;
+                text-align: center;
+                font-size: 0.8rem;
+                color: #86868b;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                animation: pulse-hint 2s infinite;
+            }
+
+            @keyframes pulse-hint {
+                0% { opacity: 0.6; }
+                50% { opacity: 1; }
+                100% { opacity: 0.6; }
+            }
+
             .pricing-grid {
                 display: flex; 
-                flex-wrap: nowrap; /* MAGIC FIX: Stops them from wrapping/repeating below! */
+                flex-wrap: nowrap; 
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
                 gap: 15px;
                 padding-bottom: 25px; 
                 -webkit-overflow-scrolling: touch;
+                
+                /* This forces a visible scrollbar on mobile */
+                scrollbar-width: thin; 
+                scrollbar-color: #d2d2d7 transparent;
+            }
+            
+            /* Webkit scrollbar styling for iPhones/Chrome */
+            .pricing-grid::-webkit-scrollbar {
+                height: 6px;
+            }
+            .pricing-grid::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            .pricing-grid::-webkit-scrollbar-thumb {
+                background-color: #d2d2d7;
+                border-radius: 10px;
             }
             
             .pricing-col {
-                /* MAGIC FIX: Forces exactly TWO packages side-by-side */
-                min-width: calc(50vw - 25px); 
+                /* THE PEEK FIX: 42vw means 2 packages take up 84% of the screen. 
+                   This leaves exactly enough room for the 3rd package to physically 
+                   "peek" out from the right edge, proving there is more to see! */
+                min-width: 42vw; 
                 scroll-snap-align: start;
             }
             
-            /* Stacks the buttons vertically, just like your Apple screenshot */
             .pricing-actions {
                 flex-direction: column;
                 gap: 10px;
                 margin-bottom: 25px;
             }
             
-            /* Scales down fonts so they fit nicely in the narrower mobile columns */
             .package-name { font-size: 1.25rem; }
             .package-price { font-size: 0.95rem; }
             .hero-metric { font-size: 2.5rem; }
@@ -1266,7 +1305,7 @@ display: inline-block; /* FIX: Makes them take up space one-by-one as they type 
     <section id="pricing" class="apple-pricing-section">
         <div class="pricing-container">
             <h2 class="pricing-header">Choose your package.</h2>
-            
+            <p class="swipe-hint">← Swipe to compare packages →</p>
             <div class="pricing-grid">
                 
                 <!-- 1. LITE PACKAGE -->
