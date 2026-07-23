@@ -185,29 +185,41 @@ body.locked {
             color: #1d1d1f;
         }
 
-        /* Mobile Adjustments */
+    /* =========================================
+           MOBILE & TABLET FIX (2-Column Side-by-Side)
+           ========================================= */
         @media (max-width: 992px) {
             .pricing-grid {
-                /* Converts to a 2x2 grid on tablets */
-                grid-template-columns: repeat(2, 1fr);
-                gap: 50px 30px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .pricing-grid {
-                /* Creates the Apple-style horizontal scrolling slider for phones */
-                display: flex;
+                display: flex; 
+                flex-wrap: nowrap; /* MAGIC FIX: Stops them from wrapping/repeating below! */
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
-                gap: 20px;
-                padding-bottom: 20px; /* Room for scrollbar */
+                gap: 15px;
+                padding-bottom: 25px; 
                 -webkit-overflow-scrolling: touch;
             }
+            
             .pricing-col {
-                min-width: 85vw; /* Takes up almost full screen width, hinting at the next card */
-                scroll-snap-align: center;
+                /* MAGIC FIX: Forces exactly TWO packages side-by-side */
+                min-width: calc(50vw - 25px); 
+                scroll-snap-align: start;
             }
+            
+            /* Stacks the buttons vertically, just like your Apple screenshot */
+            .pricing-actions {
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 25px;
+            }
+            
+            /* Scales down fonts so they fit nicely in the narrower mobile columns */
+            .package-name { font-size: 1.25rem; }
+            .package-price { font-size: 0.95rem; }
+            .hero-metric { font-size: 2.5rem; }
+            .hero-metric-sub { font-size: 0.75rem; margin-bottom: 30px; }
+            .feature-list p { font-size: 0.8rem; line-height: 1.3; }
+            .feature-icon { margin: 15px 0; }
+            .feature-icon svg { width: 26px; height: 26px; }
         }
         /* =========================================
            ABOUT SECTION STYLES
