@@ -63,6 +63,7 @@ body.locked {
             text-align: center;
             display: flex;
             flex-direction: column;
+            min-width: 40%;
         }
 
         /* Top Info */
@@ -238,11 +239,16 @@ body.locked {
                 border-radius: 10px;
             }
             
-            .pricing-col {
-                /* THE PEEK FIX: 42vw means 2 packages take up 84% of the screen. 
-                   This leaves exactly enough room for the 3rd package to physically 
-                   "peek" out from the right edge, proving there is more to see! */
-                min-width: 42vw; 
+.pricing-col {
+                /* MAGIC FIX: Using 40% instead of 42vw! 
+                   Two packages take up 80%, leaving exactly 20% of the screen 
+                   for the 3rd package to clearly peek out. */
+                min-width: 40%; 
+                
+                /* Optional: If 40% makes the text too squished on tiny phones, 
+                   you can use a fixed pixel width instead, like this:
+                   min-width: 160px; */
+                   
                 scroll-snap-align: start;
             }
             
